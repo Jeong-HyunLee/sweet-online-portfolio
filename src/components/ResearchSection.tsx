@@ -1,8 +1,9 @@
 import { useMemo } from "react";
-import galleryOutcrop from "@/assets/gallery-outcrop.jpg";
-import galleryThinsection from "@/assets/gallery-thinsection.jpg";
-import galleryFossils from "@/assets/gallery-fossils.jpg";
-import galleryLab from "@/assets/gallery-lab.jpg";
+import researchReef from "@/assets/research-reef-evolution.jpg";
+import researchMicrobialites from "@/assets/research-microbialites.jpg";
+import researchSponge from "@/assets/research-sponge.jpg";
+import researchJoseon from "@/assets/research-joseon.jpg";
+import researchOther from "@/assets/research-other.jpg";
 import { publications } from "@/data/publications";
 
 interface ResearchTopic {
