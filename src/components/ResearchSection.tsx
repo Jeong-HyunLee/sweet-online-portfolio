@@ -60,6 +60,16 @@ const topics: ResearchTopic[] = [
   },
 ];
 
+const handleTopicClick = (topicTitle: string) => {
+  const pubSection = document.getElementById("publications");
+  if (pubSection) {
+    pubSection.scrollIntoView({ behavior: "smooth" });
+    setTimeout(() => {
+      window.dispatchEvent(new CustomEvent("filter-publications-topic", { detail: topicTitle }));
+    }, 400);
+  }
+};
+
 const ResearchSection = () => (
   <section id="research" className="py-20 bg-card/50">
     <div className="container max-w-5xl">
