@@ -39,21 +39,13 @@ const MembersSection = () => {
         </h2>
         <div className="mt-2 h-1 w-16 rounded-full bg-accent" />
 
-        {/* Principal Investigator */}
-        <div className="mt-10 mb-12 flex flex-col sm:flex-row items-start gap-6 rounded-md border bg-card p-6">
+        {/* Lab group photo */}
+        <div className="mt-8 mb-10 rounded-md overflow-hidden border">
           <img
             src={professorPhoto}
-            alt="Prof. Jeong-Hyun Lee"
-            className="w-32 rounded-md border shadow-sm shrink-0"
+            alt="Lab members group photo"
+            className="w-full object-cover"
           />
-          <div>
-            <p className="font-display text-xl font-bold text-primary">Jeong-Hyun Lee, PhD</p>
-            <p className="text-sm font-medium text-accent mt-1">Principal Investigator</p>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Professor of Carbonate Sedimentology &amp; Invertebrate Paleontology<br />
-              Department of Geological Sciences, Chungnam National University
-            </p>
-          </div>
         </div>
 
         {/* Current — featured layout */}
