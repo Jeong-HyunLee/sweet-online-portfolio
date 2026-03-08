@@ -1,7 +1,9 @@
 import { useState, useMemo, useEffect, useCallback } from "react";
 import { ExternalLink, FileText, Search, X, Tag, ChevronDown, ChevronsUpDown } from "lucide-react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { publications, type Publication, type ResearchTopic } from "@/data/publications";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { publications as staticPublications, type Publication, type ResearchTopic } from "@/data/publications";
 
 type TabKey = "all" | "journal" | "book";
 
@@ -122,10 +124,45 @@ const PublicationsSection = () => {
     return () => window.removeEventListener("filter-publications-topic", handler);
   }, []);
 
-  const publicPubs = useMemo(
-    () => publications.filter((p) => (p.visibility ?? "public") === "public"),
-    []
-  );
+  // Fetch from DB, merge with static data
+  const { data: dbPubs } = useQuery({
+    queryKey: ["publications"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("publications")
+        .select("*")
+        .order("year", { ascending: false });
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  const publicPubs = useMemo(() => {
+    // Convert DB pubs to Publication format
+    const dbConverted: Publication[] = (dbPubs || [])
+      .filter((p) => p.visibility === "public")
+      .map((p) => ({
+        authors: p.authors,
+        year: p.year,
+        title: p.title,
+        journal: p.journal,
+        doi: p.doi,
+        type: p.type as "journal" | "book",
+        highlight: p.highlight || undefined,
+        pdfUrl: p.pdf_url || undefined,
+        visibility: p.visibility as "public" | "private",
+        keywords: p.keywords || [],
+        researchTopics: (p.research_topics || []) as ResearchTopic[],
+      }));
+
+    // Merge: DB pubs take priority (match by title), then add static pubs not in DB
+    const dbTitles = new Set(dbConverted.map((p) => p.title.toLowerCase()));
+    const staticOnly = staticPublications
+      .filter((p) => (p.visibility ?? "public") === "public")
+      .filter((p) => !dbTitles.has(p.title.toLowerCase()));
+
+    return [...dbConverted, ...staticOnly];
+  }, [dbPubs]);
 
   const filtered = useMemo(() => {
     let result = activeTab === "all" ? publicPubs : publicPubs.filter((p) => p.type === activeTab);

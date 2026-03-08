@@ -14,6 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      gallery: {
+        Row: {
+          alt: string
+          caption: string
+          created_at: string
+          id: string
+          image_url: string
+          sort_order: number
+        }
+        Insert: {
+          alt?: string
+          caption?: string
+          created_at?: string
+          id?: string
+          image_url: string
+          sort_order?: number
+        }
+        Update: {
+          alt?: string
+          caption?: string
+          created_at?: string
+          id?: string
+          image_url?: string
+          sort_order?: number
+        }
+        Relationships: []
+      }
       lab_news: {
         Row: {
           category: string
@@ -47,6 +74,93 @@ export type Database = {
           published_at?: string
           title?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      members: {
+        Row: {
+          created_at: string
+          id: string
+          is_alumni: boolean
+          name: string
+          period: string
+          role: string
+          sort_order: number
+          topic: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_alumni?: boolean
+          name: string
+          period?: string
+          role?: string
+          sort_order?: number
+          topic?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_alumni?: boolean
+          name?: string
+          period?: string
+          role?: string
+          sort_order?: number
+          topic?: string
+        }
+        Relationships: []
+      }
+      publications: {
+        Row: {
+          authors: string
+          created_at: string
+          doi: string
+          highlight: string | null
+          id: string
+          journal: string
+          keywords: string[] | null
+          pdf_url: string | null
+          research_topics: string[] | null
+          sort_order: number
+          title: string
+          type: string
+          updated_at: string
+          visibility: string
+          year: string
+        }
+        Insert: {
+          authors: string
+          created_at?: string
+          doi?: string
+          highlight?: string | null
+          id?: string
+          journal?: string
+          keywords?: string[] | null
+          pdf_url?: string | null
+          research_topics?: string[] | null
+          sort_order?: number
+          title: string
+          type?: string
+          updated_at?: string
+          visibility?: string
+          year?: string
+        }
+        Update: {
+          authors?: string
+          created_at?: string
+          doi?: string
+          highlight?: string | null
+          id?: string
+          journal?: string
+          keywords?: string[] | null
+          pdf_url?: string | null
+          research_topics?: string[] | null
+          sort_order?: number
+          title?: string
+          type?: string
+          updated_at?: string
+          visibility?: string
+          year?: string
         }
         Relationships: []
       }
