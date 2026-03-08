@@ -23,12 +23,12 @@ const MembersSection = () => {
   });
 
   const hasDbData = dbMembers && dbMembers.length > 0;
-  const currentMembers: Member[] = hasDbData
-    ? dbMembers.filter((m) => !m.is_alumni).map((m) => ({ name: m.name, role: m.role, topic: m.topic, period: m.period }))
-    : staticCurrent;
-  const alumni: Member[] = hasDbData
-    ? dbMembers.filter((m) => m.is_alumni).map((m) => ({ name: m.name, role: m.role, topic: m.topic, period: m.period }))
-    : staticAlumni;
+  const currentMembers = hasDbData
+    ? dbMembers.filter((m) => !m.is_alumni).map((m) => ({ id: m.id, name: m.name, role: m.role, topic: m.topic, period: m.period }))
+    : staticCurrent.map((m, i) => ({ id: `static-${i}`, ...m }));
+  const alumni = hasDbData
+    ? dbMembers.filter((m) => m.is_alumni).map((m) => ({ id: m.id, name: m.name, role: m.role, topic: m.topic, period: m.period }))
+    : staticAlumni.map((m, i) => ({ id: `alumni-${i}`, ...m }));
 
   return (
     <section id="members" className="py-20">
