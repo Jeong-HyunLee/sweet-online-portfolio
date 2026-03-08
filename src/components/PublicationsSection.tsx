@@ -195,30 +195,27 @@ const PublicationsSection = () => {
                     </span>
                   )}
                 </div>
-              </div>
-
-              {/* Action links */}
-              <div className="hidden sm:flex flex-col items-center gap-2 shrink-0 pt-1">
-                <a
-                  href={pub.doi}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-accent hover:text-primary"
-                  title="Open DOI"
-                >
-                  <ExternalLink size={16} />
-                </a>
-                {pub.pdfUrl && (
+                {/* Action links — visible on all sizes */}
+                <div className="mt-3 flex flex-wrap items-center gap-2">
                   <a
-                    href={pub.pdfUrl}
+                    href={pub.doi}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-accent hover:text-primary"
-                    title="Download PDF"
+                    className="inline-flex items-center gap-1.5 rounded-sm border border-accent/30 bg-accent/5 px-3 py-1 text-[11px] font-semibold text-accent hover:bg-accent/15 transition-colors"
                   >
-                    <FileText size={16} />
+                    <ExternalLink size={12} /> DOI
                   </a>
-                )}
+                  {pub.pdfUrl && (
+                    <a
+                      href={pub.pdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-sm border border-accent/30 bg-accent/5 px-3 py-1 text-[11px] font-semibold text-accent hover:bg-accent/15 transition-colors"
+                    >
+                      <FileText size={12} /> PDF
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           ))}
