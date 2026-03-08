@@ -36,7 +36,7 @@ const emptyNewsForm: NewsForm = {
   published_at: new Date().toISOString().slice(0, 16), doi: "",
 };
 
-type TabKey = "news" | "publications" | "members" | "gallery" | "pdfs" | "settings";
+type TabKey = "news" | "publications" | "members" | "gallery" | "about" | "laboratory" | "pdfs" | "settings";
 
 const AdminPage = () => {
   const { session, isAdmin, loading, signOut } = useAdminAuth();
