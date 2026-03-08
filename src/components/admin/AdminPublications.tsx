@@ -192,6 +192,11 @@ const AdminPublications = () => {
     <>
       <h1 className="font-display text-3xl font-bold text-primary">Manage Publications</h1>
       <div className="mt-2 h-1 w-16 rounded-full bg-accent" />
+
+      <div className="mt-6">
+        <MetricsEditor />
+      </div>
+
       <p className="mt-2 text-xs text-muted-foreground">
         DB에 없는 기존 논문은 정적 데이터에서 표시됩니다. 새 논문을 추가하거나 기존 논문을 수정하세요.
       </p>
