@@ -82,7 +82,7 @@ const MembersSection = () => {
           </div>
           <div className="space-y-3">
             {alumni.map((m) => (
-              <div key={m.name} className="rounded-md border bg-card/60 p-5 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
+              <div key={m.id} className="rounded-md border bg-card/60 p-5 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
                 <div className="shrink-0 sm:w-48">
                   <p className="font-semibold text-foreground text-sm">{m.name}</p>
                   <p className="text-[10px] text-muted-foreground/60">{m.period}</p>
