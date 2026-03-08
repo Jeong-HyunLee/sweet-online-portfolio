@@ -161,6 +161,7 @@ const PublicationsSection = () => {
     "Stromatolites & Microbialites",
     "Sponge Paleontology",
     "Korean Geology & the Great Unconformity",
+    "Other Studies",
   ];
 
   return (
