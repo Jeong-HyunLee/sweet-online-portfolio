@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { lovable } from "@/integrations/lovable/index";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Plus, Trash2, Edit2, LogOut, Upload, X, FileText, Newspaper, ShieldAlert } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
