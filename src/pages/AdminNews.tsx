@@ -184,6 +184,8 @@ const AdminPage = () => {
     { key: "publications", label: "Publications", icon: <BookOpen size={16} /> },
     { key: "members", label: "Members", icon: <Users size={16} /> },
     { key: "gallery", label: "Gallery", icon: <Image size={16} /> },
+    { key: "about", label: "About/CV", icon: <User size={16} /> },
+    { key: "laboratory", label: "Laboratory", icon: <Microscope size={16} /> },
     { key: "pdfs", label: "PDFs", icon: <FileText size={16} /> },
     { key: "settings", label: "Settings", icon: <KeyRound size={16} /> },
   ];
