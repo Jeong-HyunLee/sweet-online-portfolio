@@ -295,6 +295,14 @@ const AdminNews = () => {
           >
             <FileText size={16} /> PDFs
           </button>
+          <button
+            onClick={() => setActiveTab("settings")}
+            className={`pb-3 flex items-center gap-2 text-sm font-semibold uppercase tracking-widest border-b-2 -mb-px transition-colors ${
+              activeTab === "settings" ? "border-accent text-accent" : "border-transparent text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            <KeyRound size={16} /> Settings
+          </button>
         </div>
 
         {activeTab === "news" && (
