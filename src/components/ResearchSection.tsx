@@ -1,7 +1,9 @@
+import { useMemo } from "react";
 import galleryOutcrop from "@/assets/gallery-outcrop.jpg";
 import galleryThinsection from "@/assets/gallery-thinsection.jpg";
 import galleryFossils from "@/assets/gallery-fossils.jpg";
 import galleryLab from "@/assets/gallery-lab.jpg";
+import { publications } from "@/data/publications";
 
 interface ResearchTopic {
   id: string;
@@ -70,7 +72,19 @@ const handleTopicClick = (topicTitle: string) => {
   }
 };
 
-const ResearchSection = () => (
+const ResearchSection = () => {
+  const topicCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    const publicPubs = publications.filter((p) => (p.visibility ?? "public") === "public");
+    for (const pub of publicPubs) {
+      pub.researchTopics?.forEach((t) => {
+        counts[t] = (counts[t] || 0) + 1;
+      });
+    }
+    return counts;
+  }, []);
+
+  return (
   <section id="research" className="py-20 bg-card/50">
     <div className="container max-w-5xl">
       <h2 className="font-display text-3xl font-bold text-primary sm:text-4xl">
@@ -102,9 +116,16 @@ const ResearchSection = () => (
               <p className="text-[11px] font-semibold uppercase tracking-widest text-accent">
                 {topic.subtitle}
               </p>
-              <h3 className="mt-2 font-display text-xl font-bold text-primary md:text-2xl">
-                {topic.title}
-              </h3>
+              <div className="mt-2 flex items-center gap-2">
+                <h3 className="font-display text-xl font-bold text-primary md:text-2xl">
+                  {topic.title}
+                </h3>
+                {topicCounts[topic.title] && (
+                  <span className="rounded-full bg-accent/15 px-2.5 py-0.5 text-[11px] font-bold text-accent">
+                    {topicCounts[topic.title]} papers
+                  </span>
+                )}
+              </div>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 {topic.description}
               </p>
@@ -130,6 +151,7 @@ const ResearchSection = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default ResearchSection;
