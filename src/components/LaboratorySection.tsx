@@ -78,12 +78,13 @@ const LaboratorySection = () => {
           {equipment.map((item) => (
             <div key={item.id} className="rounded-md border bg-card overflow-hidden">
               <button
+                type="button"
                 onClick={() => item.image_url && setExpandedId(expandedId === item.id ? null : item.id)}
-                className={`w-full flex items-start gap-3 p-3 text-left transition-colors ${
-                  item.image_url ? "cursor-pointer hover:bg-accent/5" : "cursor-default"
+                className={`w-full flex items-center gap-3 p-4 text-left transition-colors ${
+                  item.image_url ? "cursor-pointer hover:bg-accent/5 active:bg-accent/10" : "cursor-default"
                 }`}
               >
-                <span className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-accent" />
+                <span className="h-2 w-2 shrink-0 rounded-full bg-accent" />
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium text-foreground">{item.name}</p>
                   {item.description && (
@@ -92,8 +93,8 @@ const LaboratorySection = () => {
                 </div>
                 {item.image_url && (
                   <ChevronDown
-                    size={14}
-                    className={`shrink-0 text-muted-foreground transition-transform duration-200 mt-0.5 ${
+                    size={18}
+                    className={`shrink-0 text-muted-foreground transition-transform duration-200 ${
                       expandedId === item.id ? "rotate-180" : ""
                     }`}
                   />
