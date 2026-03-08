@@ -1,3 +1,9 @@
+export type ResearchTopic =
+  | "Cambro-Ordovician Reefs"
+  | "Stromatolites & Microbialites"
+  | "Sponge Paleontology"
+  | "Korean Geology & the Great Unconformity";
+
 export interface Publication {
   authors: string;
   year: string;
@@ -6,9 +12,10 @@ export interface Publication {
   doi: string;
   highlight?: string;
   type: "journal" | "book";
-  pdfUrl?: string;        // relative path e.g. "/papers/Lee2026_Sedimentology.pdf"
-  visibility?: "public" | "private";  // default: "public"
-  keywords?: string[];    // for metadata-based search
+  pdfUrl?: string;
+  visibility?: "public" | "private";
+  keywords?: string[];
+  researchTopics?: ResearchTopic[];
 }
 
 export const publications: Publication[] = [
