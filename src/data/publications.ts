@@ -90,6 +90,9 @@ export const publications: Publication[] = [
     journal: "Sedimentology, v. 71, 2448–2469",
     doi: "https://doi.org/10.1111/sed.13222",
     type: "journal",
+    pdfUrl: "/papers/public/SimonetRoda2024_Sedimentology.pdf",
+    keywords: ["EBSD", "stromatolite", "crystallography"],
+    researchTopics: ["Stromatolites & Microbialites"],
   },
   {
     authors: "Oh, M.-K., Choi, T., Lee, J.-H.",
