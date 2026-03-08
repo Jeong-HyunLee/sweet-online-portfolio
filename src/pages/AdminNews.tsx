@@ -508,6 +508,57 @@ const AdminNews = () => {
             </div>
           </>
         )}
+
+        {activeTab === "settings" && (
+          <>
+            <h1 className="font-display text-3xl font-bold text-primary">Settings</h1>
+            <div className="mt-2 h-1 w-16 rounded-full bg-accent" />
+
+            <div className="mt-8 rounded-md border bg-card p-6 max-w-md">
+              <h3 className="font-display text-lg font-bold text-primary">비밀번호 변경</h3>
+              <div className="mt-4 space-y-4">
+                <input
+                  type="password"
+                  placeholder="새 비밀번호"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  className="w-full rounded-md border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+                />
+                <input
+                  type="password"
+                  placeholder="비밀번호 확인"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  className="w-full rounded-md border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+                />
+                <button
+                  onClick={async () => {
+                    if (newPassword.length < 6) {
+                      toast({ title: "비밀번호는 6자 이상이어야 합니다", variant: "destructive" });
+                      return;
+                    }
+                    if (newPassword !== confirmPassword) {
+                      toast({ title: "비밀번호가 일치하지 않습니다", variant: "destructive" });
+                      return;
+                    }
+                    const { error } = await supabase.auth.updateUser({ password: newPassword });
+                    if (error) {
+                      toast({ title: "Error", description: error.message, variant: "destructive" });
+                    } else {
+                      toast({ title: "비밀번호가 변경되었습니다!" });
+                      setNewPassword("");
+                      setConfirmPassword("");
+                    }
+                  }}
+                  disabled={!newPassword || !confirmPassword}
+                  className="rounded-md bg-accent px-6 py-2.5 text-sm font-semibold text-accent-foreground hover:bg-accent/80 transition-colors disabled:opacity-50"
+                >
+                  변경하기
+                </button>
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
