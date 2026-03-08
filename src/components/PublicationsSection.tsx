@@ -159,8 +159,7 @@ const PublicationMetrics = ({ totalPubs }: { totalPubs: number }) => {
     </div>
   );
 };
-
-
+const PublicationsSection = () => {
   const [activeTab, setActiveTab] = useState<TabKey>("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [topicFilter, setTopicFilter] = useState<ResearchTopic | null>(null);
