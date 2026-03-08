@@ -2,7 +2,7 @@ import { Users, GraduationCap } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { currentMembers as staticCurrent, alumni as staticAlumni, type Member } from "@/data/members";
-import professorPhoto from "@/assets/professor-photo.jpg";
+
 
 const roleColor: Record<string, string> = {
   Postdoc: "bg-accent/15 text-accent",
@@ -39,14 +39,6 @@ const MembersSection = () => {
         </h2>
         <div className="mt-2 h-1 w-16 rounded-full bg-accent" />
 
-        {/* Lab group photo */}
-        <div className="mt-8 mb-10 rounded-md overflow-hidden border">
-          <img
-            src={professorPhoto}
-            alt="Lab members group photo"
-            className="w-full object-cover"
-          />
-        </div>
 
         {/* Current — featured layout */}
         <div className="mt-10">
