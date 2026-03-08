@@ -317,7 +317,7 @@ const PublicationsSection = () => {
               }
 
               return (
-                <Collapsible key={year}>
+                <Collapsible key={year} open={expandAll || undefined}>
                   <CollapsibleTrigger className="w-full group/collapsible">
                     <div className="flex items-center gap-4 mb-4 cursor-pointer">
                       <div className="h-px flex-1 bg-border" />
