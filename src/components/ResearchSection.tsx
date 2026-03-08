@@ -31,7 +31,7 @@ const topics: ResearchTopic[] = [
     subtitle: "Earth's oldest living structures",
     description:
       "Microbialites — including stromatolites, thrombolites, tufas, and other microbially-mediated carbonate structures — represent some of the earliest evidence of life on Earth. We combine field observation, petrography, EBSD crystallography, and geochemistry to understand how these structures form, what they reveal about ancient and modern environments, and how to distinguish biogenic from abiotic origins. Our research extends from Precambrian–Paleozoic marine microbialites to Cretaceous freshwater tufas, exploring the full spectrum of microbially influenced carbonate precipitation.",
-    image: galleryThinsection,
+    image: researchMicrobialites,
     tags: ["Stromatolites", "Thrombolites", "Tufas", "EBSD", "Biosignatures"],
   },
   {
