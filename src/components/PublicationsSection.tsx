@@ -109,7 +109,58 @@ const PublicationCard = ({ pub }: { pub: Publication }) => (
   </div>
 );
 
-const PublicationsSection = () => {
+const PublicationMetrics = ({ totalPubs }: { totalPubs: number }) => {
+  const { data: metricsContent } = useQuery({
+    queryKey: ["site-content-pub-metrics"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("site_content")
+        .select("*")
+        .eq("section", "publication_metrics")
+        .limit(1);
+      if (error) throw error;
+      return data?.[0]?.content as unknown as { hIndex: string; citations: string } | undefined;
+    },
+  });
+
+  const hIndex = metricsContent?.hIndex || "23";
+  const citations = metricsContent?.citations || "1,496";
+
+  return (
+    <div className="mt-8 grid grid-cols-2 sm:grid-cols-5 gap-4">
+      <div className="border-l-4 border-accent rounded-r-md bg-card px-5 py-4">
+        <p className="text-2xl font-bold text-primary font-display">{totalPubs}</p>
+        <p className="text-[11px] text-muted-foreground uppercase tracking-widest mt-1">Publications</p>
+      </div>
+      <div className="border-l-4 border-accent rounded-r-md bg-card px-5 py-4">
+        <p className="text-2xl font-bold text-primary font-display">{hIndex}</p>
+        <p className="text-[11px] text-muted-foreground uppercase tracking-widest mt-1">h-index</p>
+      </div>
+      <div className="border-l-4 border-accent rounded-r-md bg-card px-5 py-4">
+        <p className="text-2xl font-bold text-primary font-display">{citations}</p>
+        <p className="text-[11px] text-muted-foreground uppercase tracking-widest mt-1">Citations</p>
+      </div>
+      <a
+        href="https://scholar.google.com/citations?user=siOMho4AAAAJ"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-center gap-2 rounded-md bg-accent px-5 py-4 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/80"
+      >
+        Google Scholar <ExternalLink size={14} />
+      </a>
+      <a
+        href="https://www.researchgate.net/profile/Jeong-Hyun-Lee-6"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-center gap-2 rounded-md border border-accent/30 px-5 py-4 text-sm font-semibold text-accent transition-colors hover:bg-accent/10"
+      >
+        ResearchGate <ExternalLink size={14} />
+      </a>
+    </div>
+  );
+};
+
+
   const [activeTab, setActiveTab] = useState<TabKey>("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [topicFilter, setTopicFilter] = useState<ResearchTopic | null>(null);
