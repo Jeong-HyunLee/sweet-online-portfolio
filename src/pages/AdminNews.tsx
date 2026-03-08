@@ -2,12 +2,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Trash2, Edit2, LogOut, Upload, X, FileText, Newspaper, ShieldAlert, KeyRound, Users, Image, BookOpen } from "lucide-react";
+import { Trash2, Edit2, LogOut, Upload, X, FileText, Newspaper, ShieldAlert, KeyRound, Users, Image, BookOpen, User, Microscope } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useAdminAuth } from "@/hooks/useAdminAuth";
 import AdminMembers from "@/components/admin/AdminMembers";
 import AdminGallery from "@/components/admin/AdminGallery";
 import AdminPublications from "@/components/admin/AdminPublications";
+import AdminAbout from "@/components/admin/AdminAbout";
+import AdminLaboratory from "@/components/admin/AdminLaboratory";
 
 // ── News Management ──
 const newsCategories = [
@@ -34,7 +36,7 @@ const emptyNewsForm: NewsForm = {
   published_at: new Date().toISOString().slice(0, 16), doi: "",
 };
 
-type TabKey = "news" | "publications" | "members" | "gallery" | "pdfs" | "settings";
+type TabKey = "news" | "publications" | "members" | "gallery" | "about" | "laboratory" | "pdfs" | "settings";
 
 const AdminPage = () => {
   const { session, isAdmin, loading, signOut } = useAdminAuth();
@@ -182,6 +184,8 @@ const AdminPage = () => {
     { key: "publications", label: "Publications", icon: <BookOpen size={16} /> },
     { key: "members", label: "Members", icon: <Users size={16} /> },
     { key: "gallery", label: "Gallery", icon: <Image size={16} /> },
+    { key: "about", label: "About/CV", icon: <User size={16} /> },
+    { key: "laboratory", label: "Laboratory", icon: <Microscope size={16} /> },
     { key: "pdfs", label: "PDFs", icon: <FileText size={16} /> },
     { key: "settings", label: "Settings", icon: <KeyRound size={16} /> },
   ];
@@ -282,6 +286,8 @@ const AdminPage = () => {
         {activeTab === "publications" && <AdminPublications />}
         {activeTab === "members" && <AdminMembers />}
         {activeTab === "gallery" && <AdminGallery />}
+        {activeTab === "about" && <AdminAbout />}
+        {activeTab === "laboratory" && <AdminLaboratory />}
 
         {activeTab === "pdfs" && (
           <>
