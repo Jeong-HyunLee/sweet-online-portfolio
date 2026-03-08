@@ -51,6 +51,8 @@ export const publications: Publication[] = [
     doi: "https://doi.org/10.1073/pnas.251140612",
     highlight: "PNAS",
     type: "journal",
+    keywords: ["Ordovician", "reef evolution", "preservation bias"],
+    researchTopics: ["Cambro-Ordovician Reefs"],
   },
   {
     authors: "Jeon, J., Simonet Roda, M., Chen, Z.-Y., Luo, C., Kershaw, S., Kim, D., Ma, J.-Y., Lee, J.-H.*, Zhang, Y.-D.*",
