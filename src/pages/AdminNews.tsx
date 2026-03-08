@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Trash2, Edit2, LogOut, Upload, X, FileText, Newspaper, ShieldAlert, KeyRound, Users, Image, BookOpen } from "lucide-react";
+import { Trash2, Edit2, LogOut, Upload, X, FileText, Newspaper, ShieldAlert, KeyRound, Users, Image, BookOpen, User, Microscope } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useAdminAuth } from "@/hooks/useAdminAuth";
 import AdminMembers from "@/components/admin/AdminMembers";
