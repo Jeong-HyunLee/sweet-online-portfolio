@@ -1,27 +1,5 @@
 import { Users, GraduationCap } from "lucide-react";
-
-interface Member {
-  name: string;
-  role: string;
-  topic: string;
-  period: string;
-}
-
-const currentMembers: Member[] = [
-  { name: "María del Mar Simonet Roda", role: "Postdoc", topic: "EBSD analysis of stromatolites and calcimicrobes", period: "2021–present" },
-  { name: "Diego Torromé", role: "Postdoc", topic: "Microfacies and geochemistry of Jurassic sponge-microbial reefs", period: "2025–present" },
-  { name: "Ja Yeon Sohn", role: "MS Student", topic: "C & O isotope analysis of gypsum-bearing lacustrine stromatolite", period: "2024–present" },
-  { name: "Hyungi Lee", role: "MS Student", topic: "Paleontology of mantis shrimp from the Miocene of Pohang", period: "2025–present" },
-  { name: "Jung Mi Kim", role: "MS Student", topic: "Paleontology of sunfish from the Miocene of Pohang", period: "2025–present" },
-  { name: "Su Yeong Cho", role: "Undergraduate", topic: "Petrography of Recent Great Salt Lake stromatolites", period: "2024–present" },
-];
-
-const alumni: Member[] = [
-  { name: "Juwan Jeon", role: "Postdoc → Sejong Science Fellow", topic: "Paleontology, paleogeography and paleoecology of stromatoporoids", period: "2023–2025" },
-  { name: "Seunghoon Lee", role: "MS → Daejeon City Hall", topic: "Phytoclast tufas in the Jinju Formation (Lower Cretaceous)", period: "2021–2024" },
-  { name: "Min-Kyu Oh", role: "MS/PhD → Institute of Mineral and Energy Resources", topic: "Sedimentary facies analysis of the Myobong Formation (lower Cambrian)", period: "2018–2024" },
-  { name: "Hoang Duy Phạm", role: "MS → Schlumberger", topic: "Keratose sponge–microbial carbonate consortium in the Lower Ordovician", period: "2018–2020" },
-];
+import { currentMembers, alumni } from "@/data/members";
 
 const roleColor: Record<string, string> = {
   Postdoc: "bg-accent/15 text-accent",
@@ -75,7 +53,7 @@ const MembersSection = () => (
         </div>
       </div>
 
-      {/* Alumni — horizontal cards with arrow showing career path */}
+      {/* Alumni */}
       <div className="mt-14">
         <div className="flex items-center gap-3 mb-6">
           <GraduationCap className="text-accent" size={22} />

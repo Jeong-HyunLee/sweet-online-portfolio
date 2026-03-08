@@ -1,33 +1,5 @@
 import { GraduationCap, Briefcase, Award, BookOpen } from "lucide-react";
-
-const education = [
-  { degree: "Ph.D.", school: "Seoul National University", years: "2010–2014", topic: "Cambrian microbial reefs in Shandong Province, China" },
-  { degree: "M.S.", school: "Seoul National University", years: "2008–2010", topic: "Paleoenvironmental implications of extensive maceriate microbialites" },
-  { degree: "B.S.", school: "Seoul National University", years: "2004–2008", topic: "Double major in Earth & Environmental Sciences (Geology) and Biology" },
-];
-
-const employment = [
-  { role: "Professor", place: "Chungnam National University", years: "2026–Present" },
-  { role: "Associate Professor", place: "Chungnam National University", years: "2020–2026" },
-  { role: "Visiting Associate Professor", place: "University of Tennessee, Knoxville", years: "2022–2023" },
-  { role: "Assistant Professor", place: "Chungnam National University", years: "2016–2020" },
-  { role: "Postdoctoral Researcher", place: "University of Tennessee, Knoxville", years: "2015–2016" },
-];
-
-const awards = [
-  { year: "2021", title: "Kamide Lecture Award", org: "Asia Oceania Geosciences Society" },
-  { year: "2017", title: "Young Geologist Award", org: "Geological Society of Korea (70th Anniversary)" },
-  { year: "2017", title: "Best Reviewer Award", org: "Journal of the Geological Society of Korea" },
-  { year: "2017", title: "Young Scientist Award", org: "Joint Conference of Geological Science & Technology of Korea" },
-  { year: "2015", title: "Best Presentation Award", org: "Joint Conference of Geological Science & Technology of Korea" },
-];
-
-const grants = [
-  { years: "2023–2032", title: "Hanwoomul-Phagi Basic Research Grant: Paleoecology and evolution of reefs", amount: "₩1.89B", funder: "National Research Foundation of Korea" },
-  { years: "2023–2027", title: "Development of exploration and mining technology on domestic titanium ore", amount: "₩12.4B (CNU ₩1.75B)", funder: "Korea Energy Technology Evaluation and Planning" },
-  { years: "2024–2027", title: "Multiscale and multidisciplinary research on the Paleozoic Yeongweol sedimentary complex", amount: "₩900M", funder: "National Research Foundation of Korea" },
-  { years: "2019–2022", title: "Outstanding Young Scientist Grant: Comparative study on early Paleozoic paleoecology", amount: "₩550M", funder: "National Research Foundation of Korea" },
-];
+import { education, employment, awards, grants } from "@/data/about";
 
 const AboutSection = () => (
   <section id="about" className="py-20">
@@ -41,7 +13,7 @@ const AboutSection = () => (
       </p>
       <div className="mt-2 h-1 w-16 rounded-full bg-accent" />
 
-      {/* Research description — two-column on desktop */}
+      {/* Research description */}
       <div className="mt-8 grid gap-8 md:grid-cols-5">
         <div className="md:col-span-3 space-y-4 text-base leading-relaxed text-muted-foreground">
           <p>
@@ -51,8 +23,6 @@ const AboutSection = () => (
             Understanding how organisms evolved along with changes in environmental conditions is of my primary interest. I also use tools such as chemostratigraphy and provenance analysis of siliciclastic sediment.
           </p>
         </div>
-
-        {/* Quick-glance focus cards stacked vertically */}
         <div className="md:col-span-2 space-y-3">
           {[
             { label: "Focus", value: "Cambrian–Ordovician Paleoecology" },
@@ -67,9 +37,8 @@ const AboutSection = () => (
         </div>
       </div>
 
-      {/* Education & Employment side-by-side */}
+      {/* Education & Employment */}
       <div className="mt-16 grid gap-12 lg:grid-cols-2">
-        {/* Education */}
         <div>
           <div className="flex items-center gap-3 mb-6">
             <GraduationCap className="text-accent" size={24} />
@@ -86,8 +55,6 @@ const AboutSection = () => (
             ))}
           </div>
         </div>
-
-        {/* Employment */}
         <div>
           <div className="flex items-center gap-3 mb-6">
             <Briefcase className="text-accent" size={24} />
@@ -106,9 +73,8 @@ const AboutSection = () => (
         </div>
       </div>
 
-      {/* Awards & Grants side-by-side */}
+      {/* Awards & Grants */}
       <div className="mt-16 grid gap-12 lg:grid-cols-2">
-        {/* Awards */}
         <div>
           <div className="flex items-center gap-3 mb-6">
             <Award className="text-accent" size={24} />
@@ -128,8 +94,6 @@ const AboutSection = () => (
             ))}
           </div>
         </div>
-
-        {/* Grants */}
         <div>
           <div className="flex items-center gap-3 mb-6">
             <BookOpen className="text-accent" size={24} />
