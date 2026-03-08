@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect } from "react";
-import { ExternalLink, FileText, Search, X, Tag } from "lucide-react";
+import { ExternalLink, FileText, Search, X, Tag, ChevronDown } from "lucide-react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { publications, type Publication, type ResearchTopic } from "@/data/publications";
 
 type TabKey = "all" | "journal" | "book";
@@ -279,21 +280,51 @@ const PublicationsSection = () => {
               No publications found matching "{searchQuery}"
             </div>
           ) : (
-            grouped.map(([year, pubs]) => (
-              <div key={year}>
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="h-px flex-1 bg-border" />
-                  <h3 className="text-lg font-display font-bold text-primary">{year}</h3>
-                  <span className="text-xs text-muted-foreground">({pubs.length})</span>
-                  <div className="h-px flex-1 bg-border" />
-                </div>
-                <div className="space-y-3">
-                  {pubs.map((pub, i) => (
-                    <PublicationCard key={`${year}-${i}`} pub={pub} />
-                  ))}
-                </div>
-              </div>
-            ))
+            grouped.map(([year, pubs], groupIndex) => {
+              const currentYear = new Date().getFullYear();
+              const yearNum = parseInt(year);
+              const isRecent = isNaN(yearNum) || yearNum >= currentYear - 4;
+              const isSearching = searchQuery.trim() !== "" || topicFilter !== null;
+
+              if (isRecent || isSearching) {
+                return (
+                  <div key={year}>
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="h-px flex-1 bg-border" />
+                      <h3 className="text-lg font-display font-bold text-primary">{year}</h3>
+                      <span className="text-xs text-muted-foreground">({pubs.length})</span>
+                      <div className="h-px flex-1 bg-border" />
+                    </div>
+                    <div className="space-y-3">
+                      {pubs.map((pub, i) => (
+                        <PublicationCard key={`${year}-${i}`} pub={pub} />
+                      ))}
+                    </div>
+                  </div>
+                );
+              }
+
+              return (
+                <Collapsible key={year}>
+                  <CollapsibleTrigger className="w-full group/collapsible">
+                    <div className="flex items-center gap-4 mb-4 cursor-pointer">
+                      <div className="h-px flex-1 bg-border" />
+                      <h3 className="text-lg font-display font-bold text-primary">{year}</h3>
+                      <span className="text-xs text-muted-foreground">({pubs.length})</span>
+                      <ChevronDown size={16} className="text-muted-foreground transition-transform group-data-[state=open]/collapsible:rotate-180" />
+                      <div className="h-px flex-1 bg-border" />
+                    </div>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <div className="space-y-3">
+                      {pubs.map((pub, i) => (
+                        <PublicationCard key={`${year}-${i}`} pub={pub} />
+                      ))}
+                    </div>
+                  </CollapsibleContent>
+                </Collapsible>
+              );
+            })
           )}
         </div>
 
