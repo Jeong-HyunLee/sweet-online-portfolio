@@ -62,7 +62,7 @@ const MembersSection = () => {
 
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {currentMembers.slice(2).map((m) => (
-              <div key={m.name} className="rounded-md border bg-card p-4">
+              <div key={m.id} className="rounded-md border bg-card p-4">
                 <span className={`inline-block rounded-sm px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider mb-2 ${roleColor[m.role] || "bg-secondary text-secondary-foreground"}`}>
                   {m.role}
                 </span>
