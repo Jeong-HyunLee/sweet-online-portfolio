@@ -15,6 +15,16 @@ const topicColors: Record<ResearchTopic, string> = {
   "Stromatolites & Microbialites": "bg-emerald-100 text-emerald-800 border-emerald-200",
   "Sponge Paleontology": "bg-amber-100 text-amber-800 border-amber-200",
   "Korean Geology & the Great Unconformity": "bg-rose-100 text-rose-800 border-rose-200",
+  "Other Studies": "bg-slate-100 text-slate-700 border-slate-200",
+};
+
+// Map topic names to Research section anchor IDs
+const topicAnchors: Record<ResearchTopic, string> = {
+  "Cambro-Ordovician Reefs": "research-cambro-ordovician-reefs",
+  "Stromatolites & Microbialites": "research-stromatolites-microbialites",
+  "Sponge Paleontology": "research-sponge-paleontology",
+  "Korean Geology & the Great Unconformity": "research-korean-geology",
+  "Other Studies": "research-other-studies",
 };
 
 const PublicationCard = ({ pub }: { pub: Publication }) => (
@@ -43,13 +53,15 @@ const PublicationCard = ({ pub }: { pub: Publication }) => (
       {pub.researchTopics && pub.researchTopics.length > 0 && (
         <div className="mt-2.5 flex flex-wrap gap-1.5">
           {pub.researchTopics.map((topic) => (
-            <span
+            <a
               key={topic}
-              className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-medium ${topicColors[topic]}`}
+              href={`#${topicAnchors[topic]}`}
+              className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-medium hover:opacity-80 transition-opacity cursor-pointer ${topicColors[topic]}`}
+              title={`View "${topic}" in Research Topics`}
             >
               <Tag size={9} />
               {topic}
-            </span>
+            </a>
           ))}
         </div>
       )}
@@ -149,6 +161,7 @@ const PublicationsSection = () => {
     "Stromatolites & Microbialites",
     "Sponge Paleontology",
     "Korean Geology & the Great Unconformity",
+    "Other Studies",
   ];
 
   return (

@@ -1,8 +1,10 @@
 import galleryOutcrop from "@/assets/gallery-outcrop.jpg";
 import galleryThinsection from "@/assets/gallery-thinsection.jpg";
 import galleryFossils from "@/assets/gallery-fossils.jpg";
+import galleryLab from "@/assets/gallery-lab.jpg";
 
 interface ResearchTopic {
+  id: string;
   title: string;
   subtitle: string;
   description: string;
@@ -12,6 +14,7 @@ interface ResearchTopic {
 
 const topics: ResearchTopic[] = [
   {
+    id: "research-cambro-ordovician-reefs",
     title: "Cambro-Ordovician Reefs",
     subtitle: "The dawn of metazoan reef ecosystems",
     description:
@@ -20,6 +23,7 @@ const topics: ResearchTopic[] = [
     tags: ["Paleoecology", "Reef Evolution", "Early Paleozoic"],
   },
   {
+    id: "research-stromatolites-microbialites",
     title: "Stromatolites & Microbialites",
     subtitle: "Earth's oldest living structures",
     description:
@@ -28,6 +32,7 @@ const topics: ResearchTopic[] = [
     tags: ["Microbial Carbonates", "EBSD", "Biosignatures"],
   },
   {
+    id: "research-sponge-paleontology",
     title: "Sponge Paleontology",
     subtitle: "Ancient reef-builders and their ecological roles",
     description:
@@ -36,12 +41,22 @@ const topics: ResearchTopic[] = [
     tags: ["Stromatoporoids", "Lithistid Sponges", "Keratose Sponges"],
   },
   {
+    id: "research-korean-geology",
     title: "Korean Geology & the Great Unconformity",
     subtitle: "Decoding the Sino-Korean Block",
     description:
       "Korea preserves a remarkable record of Paleozoic sedimentation on the eastern Sino-Korean Block. We study the Great Unconformity, Cambrian transgression sequences, and provenance shifts using detrital zircon geochronology, sedimentary facies analysis, and chemostratigraphy to reconstruct the tectonic and environmental history of the Korean Peninsula.",
     image: galleryOutcrop,
     tags: ["Stratigraphy", "Provenance Analysis", "Detrital Zircon"],
+  },
+  {
+    id: "research-other-studies",
+    title: "Other Studies",
+    subtitle: "Broader geological investigations",
+    description:
+      "Beyond our core research themes, our lab contributes to diverse geological studies including Cretaceous sedimentology, impact crater analysis, ichnology (trace fossils), Miocene basin analysis, vertebrate paleontology, and geoarchaeology. These collaborative projects reflect the breadth of our geological expertise and our commitment to advancing Earth science across disciplines.",
+    image: galleryLab,
+    tags: ["Sedimentology", "Impact Craters", "Ichnology", "Basin Analysis"],
   },
 ];
 
@@ -56,8 +71,9 @@ const ResearchSection = () => (
       <div className="mt-10 space-y-8">
         {topics.map((topic, i) => (
           <div
-            key={topic.title}
-            className={`group rounded-md border bg-card overflow-hidden flex flex-col ${
+            key={topic.id}
+            id={topic.id}
+            className={`group rounded-md border bg-card overflow-hidden flex flex-col scroll-mt-24 ${
               i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
             }`}
           >
