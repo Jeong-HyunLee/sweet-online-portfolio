@@ -51,7 +51,9 @@ const AdminNews = () => {
   const [form, setForm] = useState<NewsForm>(emptyNewsForm);
   const [editing, setEditing] = useState(false);
   const [uploading, setUploading] = useState(false);
-  const [activeTab, setActiveTab] = useState<"news" | "pdfs">("news");
+  const [activeTab, setActiveTab] = useState<"news" | "pdfs" | "settings">("news");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [pdfUploading, setPdfUploading] = useState(false);
   const { toast } = useToast();
   const queryClient = useQueryClient();
