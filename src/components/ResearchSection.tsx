@@ -58,7 +58,7 @@ const topics: ResearchTopic[] = [
     subtitle: "Broader geological investigations",
     description:
       "Beyond our core research themes, our lab contributes to diverse geological studies including Cretaceous alluvial and lacustrine sedimentology, impact crater analysis (Jeokjung–Chogye structure), ichnology (trace fossils), Miocene basin analysis and igneous geochemistry, vertebrate paleontology (Elasmobranchii, dinosaur tracks), and geoarchaeology. These collaborative projects reflect the breadth of our geological expertise and our commitment to advancing Earth science across disciplines.",
-    image: galleryLab,
+    image: researchOther,
     tags: ["Impact Craters", "Ichnology", "Miocene Basins", "Vertebrate Paleontology"],
   },
 ];
