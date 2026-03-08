@@ -1,26 +1,40 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
-const navItems = ["Home", "About", "Research", "Laboratory", "News", "Publications", "Members", "Contact"];
+const navItems = [
+  { label: "Home", path: "/" },
+  { label: "About", path: "/about" },
+  { label: "Research", path: "/research" },
+  { label: "Laboratory", path: "/laboratory" },
+  { label: "Publications", path: "/publications" },
+  { label: "Members", path: "/members" },
+  { label: "Contact", path: "/contact" },
+];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <nav className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="container flex h-16 items-center justify-between">
-        <a href="/" className="font-display text-lg font-bold tracking-wide text-primary">
+        <Link to="/" className="font-display text-lg font-bold tracking-wide text-primary">
           JH Lee Lab
-        </a>
+        </Link>
         <ul className="hidden md:flex gap-8">
           {navItems.map((item) => (
-            <li key={item}>
-              <a
-                href={`#${item.toLowerCase()}`}
-                className="text-sm font-medium uppercase tracking-widest text-muted-foreground transition-colors hover:text-primary"
+            <li key={item.label}>
+              <Link
+                to={item.path}
+                className={`text-sm font-medium uppercase tracking-widest transition-colors hover:text-primary ${
+                  location.pathname === item.path
+                    ? "text-primary"
+                    : "text-muted-foreground"
+                }`}
               >
-                {item}
-              </a>
+                {item.label}
+              </Link>
             </li>
           ))}
         </ul>
@@ -31,14 +45,18 @@ const Navbar = () => {
       {open && (
         <div className="md:hidden border-t bg-background px-6 pb-4">
           {navItems.map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="block py-3 text-sm font-medium uppercase tracking-widest text-muted-foreground hover:text-primary"
+            <Link
+              key={item.label}
+              to={item.path}
+              className={`block py-3 text-sm font-medium uppercase tracking-widest hover:text-primary ${
+                location.pathname === item.path
+                  ? "text-primary"
+                  : "text-muted-foreground"
+              }`}
               onClick={() => setOpen(false)}
             >
-              {item}
-            </a>
+              {item.label}
+            </Link>
           ))}
         </div>
       )}
