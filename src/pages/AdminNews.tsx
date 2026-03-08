@@ -286,6 +286,8 @@ const AdminPage = () => {
         {activeTab === "publications" && <AdminPublications />}
         {activeTab === "members" && <AdminMembers />}
         {activeTab === "gallery" && <AdminGallery />}
+        {activeTab === "about" && <AdminAbout />}
+        {activeTab === "laboratory" && <AdminLaboratory />}
 
         {activeTab === "pdfs" && (
           <>
