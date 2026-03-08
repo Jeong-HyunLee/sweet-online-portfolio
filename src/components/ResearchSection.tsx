@@ -20,7 +20,7 @@ const topics: ResearchTopic[] = [
     title: "Phanerozoic Reef Evolution",
     subtitle: "The rise and fall of reef ecosystems through time",
     description:
-      "Our lab investigates how reef ecosystems evolved throughout the Phanerozoic Eon (~540 Ma–present). From the earliest microbial-dominated reefs to complex metazoan frameworks built by sponges, corals, and bryozoans, we track how biological innovation, mass extinctions, and environmental change have repeatedly reshaped marine reef ecosystems across deep time.",
+      "Our lab investigates how reef ecosystems evolved throughout the Phanerozoic Eon (~540 Ma–present). We examine how biological innovation, mass extinctions, and oceanic environmental changes — including oxygenation events and seawater chemistry shifts — have repeatedly reshaped marine reef ecosystems. Our work spans from early Cambrian archaeocyath–microbial reefs through Ordovician sponge–microbial buildups to Mississippian frameworks, revealing patterns of reef decline, recovery, and ecological reorganization across deep time.",
     image: galleryOutcrop,
     tags: ["Paleoecology", "Reef Evolution", "Mass Extinctions"],
   },
