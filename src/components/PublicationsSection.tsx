@@ -15,6 +15,16 @@ const topicColors: Record<ResearchTopic, string> = {
   "Stromatolites & Microbialites": "bg-emerald-100 text-emerald-800 border-emerald-200",
   "Sponge Paleontology": "bg-amber-100 text-amber-800 border-amber-200",
   "Korean Geology & the Great Unconformity": "bg-rose-100 text-rose-800 border-rose-200",
+  "Other Studies": "bg-slate-100 text-slate-700 border-slate-200",
+};
+
+// Map topic names to Research section anchor IDs
+const topicAnchors: Record<ResearchTopic, string> = {
+  "Cambro-Ordovician Reefs": "research-cambro-ordovician-reefs",
+  "Stromatolites & Microbialites": "research-stromatolites-microbialites",
+  "Sponge Paleontology": "research-sponge-paleontology",
+  "Korean Geology & the Great Unconformity": "research-korean-geology",
+  "Other Studies": "research-other-studies",
 };
 
 const PublicationCard = ({ pub }: { pub: Publication }) => (
