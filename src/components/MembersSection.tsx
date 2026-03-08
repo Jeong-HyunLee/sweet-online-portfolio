@@ -2,7 +2,7 @@ import { Users, GraduationCap } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { currentMembers as staticCurrent, alumni as staticAlumni, type Member } from "@/data/members";
-import professorPhoto from "@/assets/professor-photo.jpg";
+
 
 const roleColor: Record<string, string> = {
   Postdoc: "bg-accent/15 text-accent",
