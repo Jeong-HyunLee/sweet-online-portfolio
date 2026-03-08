@@ -62,6 +62,9 @@ export const publications: Publication[] = [
     doi: "https://doi.org/10.1073/pnas.242610512",
     highlight: "PNAS · In This Issue",
     type: "journal",
+    pdfUrl: "/papers/public/Jeon2025_PNAS_stromatoporoid.pdf",
+    keywords: ["stromatoporoid", "phosphatic", "Ordovician reefs"],
+    researchTopics: ["Sponge Paleontology", "Cambro-Ordovician Reefs"],
   },
   {
     authors: "Lee, D.-C., Oh, M.-K., Zhang, Y., Zhang, X.-L., Lee, J.-H., Liang, K., Li, W.",
