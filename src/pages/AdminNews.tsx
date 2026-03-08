@@ -8,6 +8,8 @@ import { useAdminAuth } from "@/hooks/useAdminAuth";
 import AdminMembers from "@/components/admin/AdminMembers";
 import AdminGallery from "@/components/admin/AdminGallery";
 import AdminPublications from "@/components/admin/AdminPublications";
+import AdminAbout from "@/components/admin/AdminAbout";
+import AdminLaboratory from "@/components/admin/AdminLaboratory";
 
 // ── News Management ──
 const newsCategories = [
