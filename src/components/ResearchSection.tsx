@@ -1,9 +1,9 @@
 import { useMemo } from "react";
-import researchReef from "@/assets/research-reef-evolution.jpg";
-import researchMicrobialites from "@/assets/research-microbialites.jpg";
-import researchSponge from "@/assets/research-sponge.jpg";
-import researchJoseon from "@/assets/research-joseon.jpg";
-import researchOther from "@/assets/research-other.jpg";
+import researchReef from "@/assets/gallery-outcrop.jpg";
+import researchMicrobialites from "@/assets/gallery-thinsection.jpg";
+import researchSponge from "@/assets/gallery-fossils.jpg";
+import researchJoseon from "@/assets/gallery-fieldwork-2.jpg";
+import researchOther from "@/assets/gallery-lab.jpg";
 import { publications } from "@/data/publications";
 
 interface ResearchTopic {
