@@ -86,7 +86,7 @@ export const publications: Publication[] = [
     doi: "https://doi.org/10.1016/j.sedgeo.2025.106819",
     type: "journal",
     keywords: ["tufa", "phytoclast", "Cretaceous", "Jinju Formation"],
-    researchTopics: ["Other Studies"],
+    researchTopics: ["Microbialites"],
   },
 
   // ═══════════════════════ 2024 ═══════════════════════
@@ -419,7 +419,7 @@ export const publications: Publication[] = [
     doi: "https://doi.org/10.1016/j.palaeo.2017.10.003",
     type: "journal",
     keywords: ["macroborer", "Cambrian", "intraclast", "bioerosion"],
-    researchTopics: ["Phanerozoic Reef Evolution"],
+    researchTopics: ["Joseon Supergroup"],
   },
 
   // ═══════════════════════ 2017 ═══════════════════════
