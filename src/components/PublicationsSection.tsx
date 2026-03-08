@@ -11,19 +11,19 @@ const tabs: { key: TabKey; label: string }[] = [
 ];
 
 const topicColors: Record<ResearchTopic, string> = {
-  "Cambro-Ordovician Reefs": "bg-blue-100 text-blue-800 border-blue-200",
-  "Stromatolites & Microbialites": "bg-emerald-100 text-emerald-800 border-emerald-200",
+  "Phanerozoic Reef Evolution": "bg-blue-100 text-blue-800 border-blue-200",
+  "Microbialites": "bg-emerald-100 text-emerald-800 border-emerald-200",
   "Sponge Paleontology": "bg-amber-100 text-amber-800 border-amber-200",
-  "Korean Geology & the Great Unconformity": "bg-rose-100 text-rose-800 border-rose-200",
+  "Joseon Supergroup": "bg-rose-100 text-rose-800 border-rose-200",
   "Other Studies": "bg-slate-100 text-slate-700 border-slate-200",
 };
 
 // Map topic names to Research section anchor IDs
 const topicAnchors: Record<ResearchTopic, string> = {
-  "Cambro-Ordovician Reefs": "research-cambro-ordovician-reefs",
-  "Stromatolites & Microbialites": "research-stromatolites-microbialites",
+  "Phanerozoic Reef Evolution": "research-phanerozoic-reef-evolution",
+  "Microbialites": "research-microbialites",
   "Sponge Paleontology": "research-sponge-paleontology",
-  "Korean Geology & the Great Unconformity": "research-korean-geology",
+  "Joseon Supergroup": "research-joseon-supergroup",
   "Other Studies": "research-other-studies",
 };
 
