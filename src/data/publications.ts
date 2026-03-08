@@ -1,3 +1,9 @@
+export type ResearchTopic =
+  | "Cambro-Ordovician Reefs"
+  | "Stromatolites & Microbialites"
+  | "Sponge Paleontology"
+  | "Korean Geology & the Great Unconformity";
+
 export interface Publication {
   authors: string;
   year: string;
@@ -6,9 +12,10 @@ export interface Publication {
   doi: string;
   highlight?: string;
   type: "journal" | "book";
-  pdfUrl?: string;        // relative path e.g. "/papers/Lee2026_Sedimentology.pdf"
-  visibility?: "public" | "private";  // default: "public"
-  keywords?: string[];    // for metadata-based search
+  pdfUrl?: string;
+  visibility?: "public" | "private";
+  keywords?: string[];
+  researchTopics?: ResearchTopic[];
 }
 
 export const publications: Publication[] = [
@@ -20,6 +27,9 @@ export const publications: Publication[] = [
     journal: "Sedimentology, v. 73, 418–440",
     doi: "https://doi.org/10.1111/sed.70067",
     type: "journal",
+    pdfUrl: "/papers/public/Lee2026_Sedimentology.pdf",
+    keywords: ["detrital zircon", "Cambrian transgression", "provenance"],
+    researchTopics: ["Korean Geology & the Great Unconformity"],
   },
   // 2025
   {
@@ -29,6 +39,9 @@ export const publications: Publication[] = [
     journal: "Earth-Science Reviews, v. 270, 105244",
     doi: "https://doi.org/10.1016/j.earscirev.2025.105244",
     type: "journal",
+    pdfUrl: "/papers/public/Lee2025_EarthSciRev.pdf",
+    keywords: ["Great Unconformity", "Sino-Korean Block", "stratigraphy"],
+    researchTopics: ["Korean Geology & the Great Unconformity"],
   },
   {
     authors: "Jeon, J., Li, Q.-J., Lee, J.-H.*",
@@ -38,6 +51,8 @@ export const publications: Publication[] = [
     doi: "https://doi.org/10.1073/pnas.251140612",
     highlight: "PNAS",
     type: "journal",
+    keywords: ["Ordovician", "reef evolution", "preservation bias"],
+    researchTopics: ["Cambro-Ordovician Reefs"],
   },
   {
     authors: "Jeon, J., Simonet Roda, M., Chen, Z.-Y., Luo, C., Kershaw, S., Kim, D., Ma, J.-Y., Lee, J.-H.*, Zhang, Y.-D.*",
@@ -47,6 +62,9 @@ export const publications: Publication[] = [
     doi: "https://doi.org/10.1073/pnas.242610512",
     highlight: "PNAS · In This Issue",
     type: "journal",
+    pdfUrl: "/papers/public/Jeon2025_PNAS_stromatoporoid.pdf",
+    keywords: ["stromatoporoid", "phosphatic", "Ordovician reefs"],
+    researchTopics: ["Sponge Paleontology", "Cambro-Ordovician Reefs"],
   },
   {
     authors: "Lee, D.-C., Oh, M.-K., Zhang, Y., Zhang, X.-L., Lee, J.-H., Liang, K., Li, W.",
@@ -72,6 +90,9 @@ export const publications: Publication[] = [
     journal: "Sedimentology, v. 71, 2448–2469",
     doi: "https://doi.org/10.1111/sed.13222",
     type: "journal",
+    pdfUrl: "/papers/public/SimonetRoda2024_Sedimentology.pdf",
+    keywords: ["EBSD", "stromatolite", "crystallography"],
+    researchTopics: ["Stromatolites & Microbialites"],
   },
   {
     authors: "Oh, M.-K., Choi, T., Lee, J.-H.",
@@ -130,6 +151,9 @@ export const publications: Publication[] = [
     doi: "https://doi.org/10.1111/sed.13048",
     highlight: "Editors' Picks 2023",
     type: "journal",
+    pdfUrl: "/papers/public/Lee2023_Sedimentology.pdf",
+    keywords: ["stromatolite", "thrombolite", "Cambrian", "biostrome"],
+    researchTopics: ["Stromatolites & Microbialites", "Cambro-Ordovician Reefs"],
   },
   {
     authors: "Lee, J.-H.*, Riding, R.",
@@ -138,6 +162,8 @@ export const publications: Publication[] = [
     journal: "Journal of Paleontology, v. 97, 26–37",
     doi: "https://doi.org/10.1017/jpa.2022.85",
     type: "journal",
+    keywords: ["sponge", "Spongiostroma", "Mississippian"],
+    researchTopics: ["Sponge Paleontology"],
   },
   // 2022
   {
@@ -229,6 +255,9 @@ export const publications: Publication[] = [
     doi: "http://dx.doi.org/10.1111/GBI.12422",
     highlight: "Journal Cover · Most Cited 2020–22",
     type: "journal",
+    pdfUrl: "/papers/public/Lee2021_Geobiology.pdf",
+    keywords: ["Cryptozoon", "keratose sponge", "microbial consortium"],
+    researchTopics: ["Sponge Paleontology", "Stromatolites & Microbialites"],
   },
   {
     authors: "Lee, J.-H.*, Riding, R.",
@@ -237,6 +266,8 @@ export const publications: Publication[] = [
     journal: "Palaeogeography, Palaeoclimatology, Palaeoecology, v. 571, 110288",
     doi: "https://doi.org/10.1016/j.palaeo.2021.110288",
     type: "journal",
+    keywords: ["keratolite", "stromatolite", "consortia"],
+    researchTopics: ["Stromatolites & Microbialites"],
   },
   {
     authors: "Lee, J.-H.*",
@@ -246,6 +277,10 @@ export const publications: Publication[] = [
     doi: "https://doi.org/10.1016/B978-0-12-409548-9.11974-8",
     highlight: "Book Chapter",
     type: "book",
+    pdfUrl: "/papers/private/Lee2021_EncyclopediaGeology.pdf",
+    visibility: "private",
+    keywords: ["stromatolite", "encyclopedia", "review"],
+    researchTopics: ["Stromatolites & Microbialites"],
   },
   // 2020
   {
@@ -296,6 +331,8 @@ export const publications: Publication[] = [
     journal: "Palaeogeography, Palaeoclimatology, Palaeoecology",
     doi: "https://doi.org/10.1016/j.palaeo.2019.04.001",
     type: "journal",
+    keywords: ["lithistid sponge", "reef gap", "Cambrian"],
+    researchTopics: ["Sponge Paleontology", "Cambro-Ordovician Reefs"],
   },
   // 2018
   {
@@ -305,6 +342,9 @@ export const publications: Publication[] = [
     journal: "Earth-Science Reviews, v. 181, 98–121",
     doi: "https://doi.org/10.1016/j.earscirev.2018.04.003",
     type: "journal",
+    pdfUrl: "/papers/public/Lee2018_EarthSciRev.pdf",
+    keywords: ["marine oxygenation", "lithistid sponge", "Paleozoic reefs"],
+    researchTopics: ["Sponge Paleontology", "Cambro-Ordovician Reefs"],
   },
   {
     authors: "Hong, J., Oh, J.R., Lee, J.-H., Choh, S.J., Lee, D.J.",

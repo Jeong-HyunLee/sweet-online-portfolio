@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
-import { ExternalLink, FileText, Search, X } from "lucide-react";
-import { publications, type Publication } from "@/data/publications";
+import { ExternalLink, FileText, Search, X, Tag } from "lucide-react";
+import { publications, type Publication, type ResearchTopic } from "@/data/publications";
 
 type TabKey = "all" | "journal" | "book";
 
@@ -9,6 +9,13 @@ const tabs: { key: TabKey; label: string }[] = [
   { key: "journal", label: "Journal Articles" },
   { key: "book", label: "Book Chapters" },
 ];
+
+const topicColors: Record<ResearchTopic, string> = {
+  "Cambro-Ordovician Reefs": "bg-blue-100 text-blue-800 border-blue-200",
+  "Stromatolites & Microbialites": "bg-emerald-100 text-emerald-800 border-emerald-200",
+  "Sponge Paleontology": "bg-amber-100 text-amber-800 border-amber-200",
+  "Korean Geology & the Great Unconformity": "bg-rose-100 text-rose-800 border-rose-200",
+};
 
 const PublicationCard = ({ pub }: { pub: Publication }) => (
   <div className="group rounded-md border bg-card p-5 transition-colors hover:border-accent/50 flex gap-5">
@@ -31,6 +38,36 @@ const PublicationCard = ({ pub }: { pub: Publication }) => (
           </span>
         )}
       </div>
+
+      {/* Research topic tags */}
+      {pub.researchTopics && pub.researchTopics.length > 0 && (
+        <div className="mt-2.5 flex flex-wrap gap-1.5">
+          {pub.researchTopics.map((topic) => (
+            <span
+              key={topic}
+              className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-medium ${topicColors[topic]}`}
+            >
+              <Tag size={9} />
+              {topic}
+            </span>
+          ))}
+        </div>
+      )}
+
+      {/* Keyword pills */}
+      {pub.keywords && pub.keywords.length > 0 && (
+        <div className="mt-2 flex flex-wrap gap-1">
+          {pub.keywords.map((kw) => (
+            <span
+              key={kw}
+              className="rounded-full bg-muted px-2 py-0.5 text-[10px] text-muted-foreground"
+            >
+              {kw}
+            </span>
+          ))}
+        </div>
+      )}
+
       <div className="mt-3 flex flex-wrap items-center gap-2">
         {pub.doi && (
           <a
@@ -47,7 +84,7 @@ const PublicationCard = ({ pub }: { pub: Publication }) => (
             href={pub.pdfUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-sm border border-accent/30 bg-accent/5 px-3 py-1 text-[11px] font-semibold text-accent hover:bg-accent/15 transition-colors"
+            className="inline-flex items-center gap-1.5 rounded-sm border border-primary/30 bg-primary/5 px-3 py-1 text-[11px] font-semibold text-primary hover:bg-primary/15 transition-colors"
           >
             <FileText size={12} /> PDF
           </a>
@@ -60,8 +97,8 @@ const PublicationCard = ({ pub }: { pub: Publication }) => (
 const PublicationsSection = () => {
   const [activeTab, setActiveTab] = useState<TabKey>("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [topicFilter, setTopicFilter] = useState<ResearchTopic | null>(null);
 
-  // Only show public publications (default is public if not specified)
   const publicPubs = useMemo(
     () => publications.filter((p) => (p.visibility ?? "public") === "public"),
     []
@@ -69,6 +106,10 @@ const PublicationsSection = () => {
 
   const filtered = useMemo(() => {
     let result = activeTab === "all" ? publicPubs : publicPubs.filter((p) => p.type === activeTab);
+
+    if (topicFilter) {
+      result = result.filter((p) => p.researchTopics?.includes(topicFilter));
+    }
 
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
@@ -79,12 +120,36 @@ const PublicationsSection = () => {
           p.journal.toLowerCase().includes(q) ||
           p.year.includes(q) ||
           (p.keywords && p.keywords.some((k) => k.toLowerCase().includes(q))) ||
-          (p.highlight && p.highlight.toLowerCase().includes(q))
+          (p.highlight && p.highlight.toLowerCase().includes(q)) ||
+          (p.researchTopics && p.researchTopics.some((t) => t.toLowerCase().includes(q)))
       );
     }
 
     return result;
-  }, [activeTab, searchQuery, publicPubs]);
+  }, [activeTab, searchQuery, topicFilter, publicPubs]);
+
+  // Group by year
+  const grouped = useMemo(() => {
+    const map = new Map<string, Publication[]>();
+    for (const pub of filtered) {
+      const yr = pub.year || "Undated";
+      if (!map.has(yr)) map.set(yr, []);
+      map.get(yr)!.push(pub);
+    }
+    // Sort years descending
+    return Array.from(map.entries()).sort((a, b) => {
+      if (a[0] === "Undated") return 1;
+      if (b[0] === "Undated") return -1;
+      return parseInt(b[0]) - parseInt(a[0]);
+    });
+  }, [filtered]);
+
+  const allTopics: ResearchTopic[] = [
+    "Cambro-Ordovician Reefs",
+    "Stromatolites & Microbialites",
+    "Sponge Paleontology",
+    "Korean Geology & the Great Unconformity",
+  ];
 
   return (
     <section id="publications" className="py-20 bg-card/50">
@@ -116,8 +181,35 @@ const PublicationsSection = () => {
           </a>
         </div>
 
+        {/* Research topic filter */}
+        <div className="mt-8 flex flex-wrap gap-2">
+          <span className="text-xs text-muted-foreground self-center mr-1">Filter by topic:</span>
+          {allTopics.map((topic) => (
+            <button
+              key={topic}
+              onClick={() => setTopicFilter(topicFilter === topic ? null : topic)}
+              className={`inline-flex items-center gap-1 rounded-full border px-3 py-1 text-xs font-medium transition-all ${
+                topicFilter === topic
+                  ? topicColors[topic] + " ring-2 ring-offset-1 ring-accent/30"
+                  : "border-border text-muted-foreground hover:border-accent/40"
+              }`}
+            >
+              <Tag size={10} />
+              {topic}
+            </button>
+          ))}
+          {topicFilter && (
+            <button
+              onClick={() => setTopicFilter(null)}
+              className="text-xs text-muted-foreground hover:text-foreground underline"
+            >
+              Clear
+            </button>
+          )}
+        </div>
+
         {/* Search bar */}
-        <div className="mt-10 relative">
+        <div className="mt-6 relative">
           <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
           <input
             type="text"
@@ -158,14 +250,28 @@ const PublicationsSection = () => {
 
         <p className="mt-4 text-xs text-muted-foreground">* corresponding author · § supervised student · # supervised postdoc</p>
 
-        {/* Publication list */}
-        <div className="mt-6 space-y-3">
-          {filtered.length === 0 ? (
+        {/* Publication list grouped by year */}
+        <div className="mt-6 space-y-8">
+          {grouped.length === 0 ? (
             <div className="py-12 text-center text-sm text-muted-foreground">
               No publications found matching "{searchQuery}"
             </div>
           ) : (
-            filtered.map((pub, i) => <PublicationCard key={i} pub={pub} />)
+            grouped.map(([year, pubs]) => (
+              <div key={year}>
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="h-px flex-1 bg-border" />
+                  <h3 className="text-lg font-display font-bold text-primary">{year}</h3>
+                  <span className="text-xs text-muted-foreground">({pubs.length})</span>
+                  <div className="h-px flex-1 bg-border" />
+                </div>
+                <div className="space-y-3">
+                  {pubs.map((pub, i) => (
+                    <PublicationCard key={`${year}-${i}`} pub={pub} />
+                  ))}
+                </div>
+              </div>
+            ))
           )}
         </div>
 
