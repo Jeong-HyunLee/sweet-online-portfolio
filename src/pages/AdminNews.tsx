@@ -174,10 +174,9 @@ const AdminNews = () => {
     }
   };
 
-  const handleGoogleLogin = async () => {
-    const { error } = await lovable.auth.signInWithOAuth("google", {
-      redirect_uri: window.location.origin + "/admin",
-    });
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) toast({ title: "Login failed", description: error.message, variant: "destructive" });
   };
 
