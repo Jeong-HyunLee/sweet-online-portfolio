@@ -44,10 +44,10 @@ const AdminAbout = () => {
   const saveMutation = useMutation({
     mutationFn: async ({ content, id, sort_order }: { content: Record<string, string>; id?: string; sort_order: number }) => {
       if (id) {
-        const { error } = await supabase.from("site_content").update({ content, sort_order }).eq("id", id);
+        const { error } = await supabase.from("site_content").update({ content: content as any, sort_order }).eq("id", id);
         if (error) throw error;
       } else {
-        const { error } = await supabase.from("site_content").insert({ section: activeSection, content, sort_order });
+        const { error } = await supabase.from("site_content").insert([{ section: activeSection, content: content as any, sort_order }]);
         if (error) throw error;
       }
     },
