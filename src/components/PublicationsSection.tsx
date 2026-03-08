@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, FileText } from "lucide-react";
 
 interface Publication {
   authors: string;
@@ -9,6 +9,7 @@ interface Publication {
   doi: string;
   highlight?: string;
   type: "journal" | "book";
+  pdfUrl?: string;
 }
 
 const publications: Publication[] = [
@@ -99,6 +100,10 @@ const publications: Publication[] = [
   },
 ];
 
+// PDF URLs are stored in Supabase storage. To add a PDF to a publication,
+// upload it via the admin panel at /admin/publications, or manually set the
+// pdfUrl field above to a public URL from the 'publication-pdfs' bucket.
+
 type TabKey = "all" | "journal" | "book";
 
 const tabs: { key: TabKey; label: string }[] = [
@@ -120,7 +125,7 @@ const PublicationsSection = () => {
         </h2>
         <div className="mt-2 h-1 w-16 rounded-full bg-accent" />
 
-        {/* Metrics — horizontal cards with accent left border */}
+        {/* Metrics */}
         <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
           {[
             { value: "63+", label: "Journal Articles" },
@@ -168,7 +173,7 @@ const PublicationsSection = () => {
               key={i}
               className="group rounded-md border bg-card p-5 transition-colors hover:border-accent/50 flex gap-5"
             >
-              {/* Year pill on left */}
+              {/* Year pill */}
               <div className="hidden sm:flex flex-col items-center pt-0.5">
                 <span className="rounded-full bg-accent/15 px-3 py-1 text-xs font-bold text-accent whitespace-nowrap">
                   {pub.year}
@@ -192,16 +197,29 @@ const PublicationsSection = () => {
                 </div>
               </div>
 
-              {/* DOI link */}
-              <a
-                href={pub.doi}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden sm:flex items-start pt-1 text-accent hover:text-primary shrink-0"
-                title="Open DOI"
-              >
-                <ExternalLink size={16} />
-              </a>
+              {/* Action links */}
+              <div className="hidden sm:flex flex-col items-center gap-2 shrink-0 pt-1">
+                <a
+                  href={pub.doi}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent hover:text-primary"
+                  title="Open DOI"
+                >
+                  <ExternalLink size={16} />
+                </a>
+                {pub.pdfUrl && (
+                  <a
+                    href={pub.pdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-accent hover:text-primary"
+                    title="Download PDF"
+                  >
+                    <FileText size={16} />
+                  </a>
+                )}
+              </div>
             </div>
           ))}
         </div>
