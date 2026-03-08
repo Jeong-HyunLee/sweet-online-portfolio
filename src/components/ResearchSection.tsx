@@ -72,7 +72,19 @@ const handleTopicClick = (topicTitle: string) => {
   }
 };
 
-const ResearchSection = () => (
+const ResearchSection = () => {
+  const topicCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    const publicPubs = publications.filter((p) => (p.visibility ?? "public") === "public");
+    for (const pub of publicPubs) {
+      pub.researchTopics?.forEach((t) => {
+        counts[t] = (counts[t] || 0) + 1;
+      });
+    }
+    return counts;
+  }, []);
+
+  return (
   <section id="research" className="py-20 bg-card/50">
     <div className="container max-w-5xl">
       <h2 className="font-display text-3xl font-bold text-primary sm:text-4xl">
