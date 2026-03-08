@@ -5,6 +5,8 @@ import AboutSection from "@/components/AboutSection";
 import ResearchSection from "@/components/ResearchSection";
 import GallerySection from "@/components/GallerySection";
 import PublicationsSection from "@/components/PublicationsSection";
+import InvitedTalksSection from "@/components/InvitedTalksSection";
+import TeachingSection from "@/components/TeachingSection";
 import MembersSection from "@/components/MembersSection";
 import Footer from "@/components/Footer";
 
@@ -17,6 +19,8 @@ const Index = () => (
     <ResearchSection />
     <GallerySection />
     <PublicationsSection />
+    <InvitedTalksSection />
+    <TeachingSection />
     <MembersSection />
     <Footer />
   </div>
