@@ -2,7 +2,7 @@ import { GraduationCap, Briefcase, Award, BookOpen } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { education as staticEdu, employment as staticEmp, awards as staticAwards, grants as staticGrants } from "@/data/about";
-import professorPhoto from "@/assets/professor-photo.jpg";
+import professorField from "@/assets/professor-field.jpg";
 
 const AboutSection = () => {
   const { data: dbContent } = useQuery({
