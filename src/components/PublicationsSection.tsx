@@ -242,14 +242,14 @@ const PublicationsSection = () => {
   const grouped = useMemo(() => {
     const map = new Map<string, Publication[]>();
     for (const pub of filtered) {
-      const yr = pub.year || "Undated";
+      const yr = pub.year || "in press";
       if (!map.has(yr)) map.set(yr, []);
       map.get(yr)!.push(pub);
     }
-    // Sort years descending
+    // Sort years descending, "in press" always first
     return Array.from(map.entries()).sort((a, b) => {
-      if (a[0] === "Undated") return 1;
-      if (b[0] === "Undated") return -1;
+      if (a[0] === "in press") return -1;
+      if (b[0] === "in press") return 1;
       return parseInt(b[0]) - parseInt(a[0]);
     });
   }, [filtered]);
