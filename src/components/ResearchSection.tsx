@@ -118,6 +118,12 @@ const ResearchSection = () => (
                   </span>
                 ))}
               </div>
+              <button
+                onClick={() => handleTopicClick(topic.title)}
+                className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-accent hover:underline self-start"
+              >
+                View Publications →
+              </button>
             </div>
           </div>
         ))}

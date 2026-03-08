@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { ExternalLink, FileText, Search, X, Tag } from "lucide-react";
 import { publications, type Publication, type ResearchTopic } from "@/data/publications";
 
