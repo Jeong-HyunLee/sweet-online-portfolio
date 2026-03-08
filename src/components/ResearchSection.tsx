@@ -16,20 +16,20 @@ interface ResearchTopic {
 
 const topics: ResearchTopic[] = [
   {
-    id: "research-cambro-ordovician-reefs",
-    title: "Cambro-Ordovician Reefs",
-    subtitle: "The dawn of metazoan reef ecosystems",
+    id: "research-phanerozoic-reef-evolution",
+    title: "Phanerozoic Reef Evolution",
+    subtitle: "The rise and fall of reef ecosystems through time",
     description:
-      "Our lab investigates how the earliest animal-built reefs evolved during the Cambrian and Ordovician periods (~540–440 Ma). We study the transition from microbial-dominated reefs to frameworks constructed by sponges, bryozoans, and other metazoans — tracking how biological innovation and environmental change reshaped marine ecosystems.",
+      "Our lab investigates how reef ecosystems evolved throughout the Phanerozoic Eon (~540 Ma–present). From the earliest microbial-dominated reefs to complex metazoan frameworks built by sponges, corals, and bryozoans, we track how biological innovation, mass extinctions, and environmental change have repeatedly reshaped marine reef ecosystems across deep time.",
     image: galleryOutcrop,
-    tags: ["Paleoecology", "Reef Evolution", "Early Paleozoic"],
+    tags: ["Paleoecology", "Reef Evolution", "Mass Extinctions"],
   },
   {
-    id: "research-stromatolites-microbialites",
-    title: "Stromatolites & Microbialites",
+    id: "research-microbialites",
+    title: "Microbialites",
     subtitle: "Earth's oldest living structures",
     description:
-      "Stromatolites are laminated sedimentary structures formed by microbial communities and represent some of the earliest evidence of life on Earth. We combine field observation, petrography, EBSD crystallography, and geochemistry to understand how these structures form, what they tell us about ancient environments, and how to distinguish biogenic from abiotic origins.",
+      "Microbialites — including stromatolites, thrombolites, and other microbially-mediated carbonate structures — represent some of the earliest evidence of life on Earth. We combine field observation, petrography, EBSD crystallography, and geochemistry to understand how these structures form, what they tell us about ancient environments, and how to distinguish biogenic from abiotic origins.",
     image: galleryThinsection,
     tags: ["Microbial Carbonates", "EBSD", "Biosignatures"],
   },
@@ -43,11 +43,11 @@ const topics: ResearchTopic[] = [
     tags: ["Stromatoporoids", "Lithistid Sponges", "Keratose Sponges"],
   },
   {
-    id: "research-korean-geology",
-    title: "Korean Geology & the Great Unconformity",
-    subtitle: "Decoding the Sino-Korean Block",
+    id: "research-joseon-supergroup",
+    title: "Joseon Supergroup",
+    subtitle: "Paleozoic sedimentary record of the Korean Peninsula",
     description:
-      "Korea preserves a remarkable record of Paleozoic sedimentation on the eastern Sino-Korean Block. We study the Great Unconformity, Cambrian transgression sequences, and provenance shifts using detrital zircon geochronology, sedimentary facies analysis, and chemostratigraphy to reconstruct the tectonic and environmental history of the Korean Peninsula.",
+      "The Joseon Supergroup preserves a remarkable record of Cambrian–Ordovician sedimentation on the eastern Sino-Korean Block. We study the Great Unconformity, Cambrian transgression sequences, and provenance shifts using detrital zircon geochronology, sedimentary facies analysis, and chemostratigraphy to reconstruct the tectonic and environmental history of the Korean Peninsula.",
     image: galleryOutcrop,
     tags: ["Stratigraphy", "Provenance Analysis", "Detrital Zircon"],
   },

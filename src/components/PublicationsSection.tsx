@@ -166,10 +166,10 @@ const PublicationsSection = () => {
   }, [filtered]);
 
   const allTopics: ResearchTopic[] = [
-    "Cambro-Ordovician Reefs",
-    "Stromatolites & Microbialites",
+    "Phanerozoic Reef Evolution",
+    "Microbialites",
     "Sponge Paleontology",
-    "Korean Geology & the Great Unconformity",
+    "Joseon Supergroup",
     "Other Studies",
   ];
 
