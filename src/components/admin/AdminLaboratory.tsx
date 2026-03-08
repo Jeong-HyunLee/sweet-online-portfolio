@@ -35,7 +35,7 @@ const AdminLaboratory = () => {
 
   useEffect(() => {
     if (labContent) {
-      const c = labContent.content as LabData;
+      const c = labContent.content as unknown as LabData;
       setTitle(c.title || "");
       setDescription(c.description || "");
       setEquipment(c.equipment || []);
