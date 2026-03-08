@@ -49,7 +49,7 @@ const topics: ResearchTopic[] = [
     subtitle: "Paleozoic sedimentary record of the Korean Peninsula",
     description:
       "The Joseon Supergroup preserves a remarkable record of Cambrian–Ordovician sedimentation on the eastern Sino-Korean Block. We study the Great Unconformity, Cambrian transgression sequences, provenance shifts, and bioerosion records using detrital zircon geochronology, sedimentary facies analysis, and chemostratigraphy. Our research also encompasses the broader Paleozoic stratigraphy of the Korean Peninsula, including the Devonian Imjin System and Ordovician reef and platform development in the Taebaek and Yeongwol groups.",
-    image: galleryOutcrop,
+    image: researchJoseon,
     tags: ["Great Unconformity", "Detrital Zircon", "Taebaek Group", "Bioerosion"],
   },
   {
