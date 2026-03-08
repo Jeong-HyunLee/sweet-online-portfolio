@@ -1,5 +1,5 @@
-import { useState, useMemo, useEffect } from "react";
-import { ExternalLink, FileText, Search, X, Tag, ChevronDown } from "lucide-react";
+import { useState, useMemo, useEffect, useCallback } from "react";
+import { ExternalLink, FileText, Search, X, Tag, ChevronDown, ChevronsUpDown } from "lucide-react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { publications, type Publication, type ResearchTopic } from "@/data/publications";
 
@@ -111,6 +111,7 @@ const PublicationsSection = () => {
   const [activeTab, setActiveTab] = useState<TabKey>("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [topicFilter, setTopicFilter] = useState<ResearchTopic | null>(null);
+  const [expandAll, setExpandAll] = useState(false);
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -273,6 +274,17 @@ const PublicationsSection = () => {
 
         <p className="mt-4 text-xs text-muted-foreground">* corresponding author · § supervised student · # supervised postdoc</p>
 
+        {/* Expand/Collapse all button */}
+        <div className="mt-4 flex justify-end">
+          <button
+            onClick={() => setExpandAll((prev) => !prev)}
+            className="inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground hover:border-accent/40 transition-colors"
+          >
+            <ChevronsUpDown size={14} />
+            {expandAll ? "모두 접기" : "모두 펼치기"}
+          </button>
+        </div>
+
         {/* Publication list grouped by year */}
         <div className="mt-6 space-y-8">
           {grouped.length === 0 ? (
@@ -305,7 +317,7 @@ const PublicationsSection = () => {
               }
 
               return (
-                <Collapsible key={year}>
+                <Collapsible key={year} open={expandAll || undefined}>
                   <CollapsibleTrigger className="w-full group/collapsible">
                     <div className="flex items-center gap-4 mb-4 cursor-pointer">
                       <div className="h-px flex-1 bg-border" />
