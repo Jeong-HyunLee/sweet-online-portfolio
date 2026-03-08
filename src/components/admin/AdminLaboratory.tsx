@@ -45,12 +45,12 @@ const AdminLaboratory = () => {
 
   const saveMutation = useMutation({
     mutationFn: async () => {
-      const content: LabData = { title, description, equipment };
+      const content = { title, description, equipment } as unknown as Record<string, any>;
       if (existingId) {
-        const { error } = await supabase.from("site_content").update({ content }).eq("id", existingId);
+        const { error } = await supabase.from("site_content").update({ content: content as any }).eq("id", existingId);
         if (error) throw error;
       } else {
-        const { error } = await supabase.from("site_content").insert({ section: "laboratory", content, sort_order: 1 });
+        const { error } = await supabase.from("site_content").insert([{ section: "laboratory", content: content as any, sort_order: 1 }]);
         if (error) throw error;
       }
     },
