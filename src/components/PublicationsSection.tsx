@@ -274,6 +274,17 @@ const PublicationsSection = () => {
 
         <p className="mt-4 text-xs text-muted-foreground">* corresponding author · § supervised student · # supervised postdoc</p>
 
+        {/* Expand/Collapse all button */}
+        <div className="mt-4 flex justify-end">
+          <button
+            onClick={() => setExpandAll((prev) => !prev)}
+            className="inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground hover:border-accent/40 transition-colors"
+          >
+            <ChevronsUpDown size={14} />
+            {expandAll ? "모두 접기" : "모두 펼치기"}
+          </button>
+        </div>
+
         {/* Publication list grouped by year */}
         <div className="mt-6 space-y-8">
           {grouped.length === 0 ? (
