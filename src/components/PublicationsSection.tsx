@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect } from "react";
-import { ExternalLink, FileText, Search, X, Tag } from "lucide-react";
+import { ExternalLink, FileText, Search, X, Tag, ChevronDown } from "lucide-react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { publications, type Publication, type ResearchTopic } from "@/data/publications";
 
 type TabKey = "all" | "journal" | "book";
