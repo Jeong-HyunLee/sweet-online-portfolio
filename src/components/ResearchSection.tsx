@@ -153,4 +153,6 @@ const ResearchSection = () => {
   </section>
 );
 
+};
+
 export default ResearchSection;
