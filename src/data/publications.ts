@@ -331,6 +331,8 @@ export const publications: Publication[] = [
     journal: "Palaeogeography, Palaeoclimatology, Palaeoecology",
     doi: "https://doi.org/10.1016/j.palaeo.2019.04.001",
     type: "journal",
+    keywords: ["lithistid sponge", "reef gap", "Cambrian"],
+    researchTopics: ["Sponge Paleontology", "Cambro-Ordovician Reefs"],
   },
   // 2018
   {
@@ -340,6 +342,9 @@ export const publications: Publication[] = [
     journal: "Earth-Science Reviews, v. 181, 98–121",
     doi: "https://doi.org/10.1016/j.earscirev.2018.04.003",
     type: "journal",
+    pdfUrl: "/papers/public/Lee2018_EarthSciRev.pdf",
+    keywords: ["marine oxygenation", "lithistid sponge", "Paleozoic reefs"],
+    researchTopics: ["Sponge Paleontology", "Cambro-Ordovician Reefs"],
   },
   {
     authors: "Hong, J., Oh, J.R., Lee, J.-H., Choh, S.J., Lee, D.J.",
