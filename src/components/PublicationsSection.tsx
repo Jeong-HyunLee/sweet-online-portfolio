@@ -111,6 +111,7 @@ const PublicationsSection = () => {
   const [activeTab, setActiveTab] = useState<TabKey>("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [topicFilter, setTopicFilter] = useState<ResearchTopic | null>(null);
+  const [expandAll, setExpandAll] = useState(false);
 
   useEffect(() => {
     const handler = (e: Event) => {
