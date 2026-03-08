@@ -40,7 +40,7 @@ const topics: ResearchTopic[] = [
     description:
       "Sponges — particularly lithistids, stromatoporoids, and keratose sponges — were critical reef builders throughout the Paleozoic. Our work has revealed that some classic 'stromatolites' are actually keratose sponge–microbial consortia, fundamentally reinterpreting the fossil record. We study their taxonomy, paleoecology, and role in reef construction from the Cambrian to the Carboniferous across multiple continents, including the recent discovery of the earliest phosphatic stromatoporoid reefs from the Early Ordovician.",
     image: galleryFossils,
-    tags: ["Stromatoporoids", "Lithistid Sponges", "Keratose Sponges"],
+    tags: ["Stromatoporoids", "Lithistid Sponges", "Keratose Sponges", "Sponge–Microbe Consortia"],
   },
   {
     id: "research-joseon-supergroup",
