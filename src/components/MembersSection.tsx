@@ -47,7 +47,7 @@ const MembersSection = () => {
 
           <div className="grid gap-4 sm:grid-cols-2 mb-4">
             {currentMembers.slice(0, 2).map((m) => (
-              <div key={m.name} className="rounded-md border-l-4 border-accent bg-card p-6">
+              <div key={m.id} className="rounded-md border-l-4 border-accent bg-card p-6">
                 <div className="flex items-start justify-between gap-2">
                   <p className="font-semibold text-foreground">{m.name}</p>
                   <span className={`rounded-sm px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider whitespace-nowrap ${roleColor[m.role] || "bg-secondary text-secondary-foreground"}`}>
