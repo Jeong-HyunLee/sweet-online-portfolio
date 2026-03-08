@@ -7,7 +7,7 @@ export interface Publication {
   highlight?: string;
   type: "journal" | "book";
   pdfUrl?: string;        // relative path e.g. "/papers/Lee2026_Sedimentology.pdf"
-  visibility: "public" | "private";  // public = visible to all, private = internal only
+  visibility?: "public" | "private";  // default: "public"
   keywords?: string[];    // for metadata-based search
 }
 

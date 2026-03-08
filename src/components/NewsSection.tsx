@@ -1,6 +1,13 @@
-import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
-import { Newspaper, Calendar, Tag } from "lucide-react";
+import { Newspaper, Calendar } from "lucide-react";
+
+interface NewsItem {
+  id: string;
+  title: string;
+  content: string;
+  category: string;
+  published_at: string;
+  image_url?: string;
+}
 
 const categoryIcon: Record<string, string> = {
   paper: "📄",
@@ -20,43 +27,36 @@ const categoryLabel: Record<string, string> = {
   general: "News",
 };
 
+// Static news data — edit this array to add/remove news items for NAS deployment
+// For Lovable Cloud deployment, this is overridden by Supabase data
+const staticNews: NewsItem[] = [
+  {
+    id: "1",
+    title: "New PNAS paper on Ordovician reef evolution",
+    content: "Our paper 'Preservation bias obscures gradual Ordovician reef evolution' has been published in PNAS.",
+    category: "paper",
+    published_at: "2025-07-01",
+  },
+  {
+    id: "2",
+    title: "PNAS paper on phosphatic stromatoporoid sponges",
+    content: "Our paper 'Phosphatic stromatoporoid sponges formed reefs ~480 Mya' has been published in PNAS and featured in 'In This Issue'.",
+    category: "paper",
+    published_at: "2025-04-01",
+  },
+  {
+    id: "3",
+    title: "Great Unconformity synthesis published in Earth-Science Reviews",
+    content: "A comprehensive synthesis of the Great Unconformity in the eastern Sino-Korean Block is now published.",
+    category: "paper",
+    published_at: "2025-01-15",
+  },
+];
+
 const NewsSection = () => {
-  const { data: news, isLoading } = useQuery({
-    queryKey: ["lab-news"],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("lab_news")
-        .select("*")
-        .order("published_at", { ascending: false })
-        .limit(6);
-      if (error) throw error;
-      return data;
-    },
-  });
+  const news = staticNews;
 
-  if (isLoading) {
-    return (
-      <section id="news" className="py-20 bg-card/50">
-        <div className="container max-w-5xl">
-          <h2 className="font-display text-3xl font-bold text-primary sm:text-4xl">Lab News</h2>
-          <div className="mt-2 h-1 w-16 rounded-full bg-accent" />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="rounded-md border bg-card p-5 animate-pulse">
-                <div className="h-4 w-24 bg-muted rounded" />
-                <div className="mt-3 h-5 w-full bg-muted rounded" />
-                <div className="mt-2 h-4 w-3/4 bg-muted rounded" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  if (!news || news.length === 0) {
-    return null; // Don't show section if no news
-  }
+  if (!news || news.length === 0) return null;
 
   return (
     <section id="news" className="py-20 bg-card/50">

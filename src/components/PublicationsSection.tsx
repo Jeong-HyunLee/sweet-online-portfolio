@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { ExternalLink, FileText } from "lucide-react";
+import { useState, useMemo } from "react";
+import { ExternalLink, FileText, Search, X } from "lucide-react";
 import { publications, type Publication } from "@/data/publications";
 
 type TabKey = "all" | "journal" | "book";
@@ -12,14 +12,11 @@ const tabs: { key: TabKey; label: string }[] = [
 
 const PublicationCard = ({ pub }: { pub: Publication }) => (
   <div className="group rounded-md border bg-card p-5 transition-colors hover:border-accent/50 flex gap-5">
-    {/* Year pill */}
     <div className="hidden sm:flex flex-col items-center pt-0.5">
       <span className="rounded-full bg-accent/15 px-3 py-1 text-xs font-bold text-accent whitespace-nowrap">
         {pub.year || "—"}
       </span>
     </div>
-
-    {/* Content */}
     <div className="flex-1 min-w-0">
       <div className="flex flex-wrap items-center gap-2 sm:hidden mb-1">
         <span className="text-xs font-semibold text-accent">{pub.year || "—"}</span>
@@ -62,8 +59,32 @@ const PublicationCard = ({ pub }: { pub: Publication }) => (
 
 const PublicationsSection = () => {
   const [activeTab, setActiveTab] = useState<TabKey>("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const filtered = activeTab === "all" ? publications : publications.filter((p) => p.type === activeTab);
+  // Only show public publications (default is public if not specified)
+  const publicPubs = useMemo(
+    () => publications.filter((p) => (p.visibility ?? "public") === "public"),
+    []
+  );
+
+  const filtered = useMemo(() => {
+    let result = activeTab === "all" ? publicPubs : publicPubs.filter((p) => p.type === activeTab);
+
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
+      result = result.filter(
+        (p) =>
+          p.title.toLowerCase().includes(q) ||
+          p.authors.toLowerCase().includes(q) ||
+          p.journal.toLowerCase().includes(q) ||
+          p.year.includes(q) ||
+          (p.keywords && p.keywords.some((k) => k.toLowerCase().includes(q))) ||
+          (p.highlight && p.highlight.toLowerCase().includes(q))
+      );
+    }
+
+    return result;
+  }, [activeTab, searchQuery, publicPubs]);
 
   return (
     <section id="publications" className="py-20 bg-card/50">
@@ -95,8 +116,28 @@ const PublicationsSection = () => {
           </a>
         </div>
 
+        {/* Search bar */}
+        <div className="mt-10 relative">
+          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+          <input
+            type="text"
+            placeholder="Search by title, author, journal, year, or keyword..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full rounded-md border bg-card pl-10 pr-10 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent"
+          />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery("")}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+            >
+              <X size={16} />
+            </button>
+          )}
+        </div>
+
         {/* Tabs */}
-        <div className="mt-12 flex items-end gap-6 border-b border-border">
+        <div className="mt-6 flex items-end gap-6 border-b border-border">
           {tabs.map((tab) => (
             <button
               key={tab.key}
@@ -110,15 +151,22 @@ const PublicationsSection = () => {
               {tab.label}
             </button>
           ))}
+          <span className="ml-auto pb-3 text-xs text-muted-foreground">
+            {filtered.length} result{filtered.length !== 1 ? "s" : ""}
+          </span>
         </div>
 
         <p className="mt-4 text-xs text-muted-foreground">* corresponding author · § supervised student · # supervised postdoc</p>
 
         {/* Publication list */}
         <div className="mt-6 space-y-3">
-          {filtered.map((pub, i) => (
-            <PublicationCard key={i} pub={pub} />
-          ))}
+          {filtered.length === 0 ? (
+            <div className="py-12 text-center text-sm text-muted-foreground">
+              No publications found matching "{searchQuery}"
+            </div>
+          ) : (
+            filtered.map((pub, i) => <PublicationCard key={i} pub={pub} />)
+          )}
         </div>
 
         <p className="mt-8 text-center text-sm text-muted-foreground">
