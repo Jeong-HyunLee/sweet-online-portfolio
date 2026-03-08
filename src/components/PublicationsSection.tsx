@@ -53,13 +53,15 @@ const PublicationCard = ({ pub }: { pub: Publication }) => (
       {pub.researchTopics && pub.researchTopics.length > 0 && (
         <div className="mt-2.5 flex flex-wrap gap-1.5">
           {pub.researchTopics.map((topic) => (
-            <span
+            <a
               key={topic}
-              className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-medium ${topicColors[topic]}`}
+              href={`#${topicAnchors[topic]}`}
+              className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-medium hover:opacity-80 transition-opacity cursor-pointer ${topicColors[topic]}`}
+              title={`View "${topic}" in Research Topics`}
             >
               <Tag size={9} />
               {topic}
-            </span>
+            </a>
           ))}
         </div>
       )}
