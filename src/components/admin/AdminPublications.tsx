@@ -1,8 +1,83 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Trash2, Edit2 } from "lucide-react";
+import { Trash2, Edit2, Save } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+
+/* ── Metrics Editor (h-index, citations) ── */
+const MetricsEditor = () => {
+  const [hIndex, setHIndex] = useState("");
+  const [citations, setCitations] = useState("");
+  const [existingId, setExistingId] = useState<string | null>(null);
+  const { toast } = useToast();
+  const queryClient = useQueryClient();
+
+  const { data: metricsRow } = useQuery({
+    queryKey: ["admin-pub-metrics"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("site_content")
+        .select("*")
+        .eq("section", "publication_metrics")
+        .limit(1);
+      if (error) throw error;
+      return data?.[0];
+    },
+  });
+
+  useEffect(() => {
+    if (metricsRow) {
+      const c = metricsRow.content as unknown as { hIndex: string; citations: string };
+      setHIndex(c.hIndex || "");
+      setCitations(c.citations || "");
+      setExistingId(metricsRow.id);
+    }
+  }, [metricsRow]);
+
+  const saveMutation = useMutation({
+    mutationFn: async () => {
+      const content = { hIndex, citations } as unknown as Record<string, any>;
+      if (existingId) {
+        const { error } = await supabase.from("site_content").update({ content: content as any }).eq("id", existingId);
+        if (error) throw error;
+      } else {
+        const { error } = await supabase.from("site_content").insert([{ section: "publication_metrics", content: content as any, sort_order: 0 }]);
+        if (error) throw error;
+      }
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["admin-pub-metrics"] });
+      queryClient.invalidateQueries({ queryKey: ["site-content-pub-metrics"] });
+      toast({ title: "Metrics saved!" });
+    },
+    onError: (err: any) => toast({ title: "Error", description: err.message, variant: "destructive" }),
+  });
+
+  const inputClass = "w-full rounded-md border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent";
+
+  return (
+    <div className="rounded-md border bg-card p-5 mb-6 space-y-3">
+      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Publication Metrics (Google Scholar)</p>
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <label className="text-xs text-muted-foreground">h-index</label>
+          <input value={hIndex} onChange={(e) => setHIndex(e.target.value)} className={inputClass} />
+        </div>
+        <div>
+          <label className="text-xs text-muted-foreground">Citations</label>
+          <input value={citations} onChange={(e) => setCitations(e.target.value)} className={inputClass} />
+        </div>
+      </div>
+      <button
+        onClick={() => saveMutation.mutate()}
+        disabled={saveMutation.isPending}
+        className="rounded-md bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground hover:bg-accent/80 transition-colors disabled:opacity-50 flex items-center gap-2"
+      >
+        <Save size={14} /> {saveMutation.isPending ? "Saving..." : "Save Metrics"}
+      </button>
+    </div>
+  );
+};
 
 const RESEARCH_TOPICS = [
   "Phanerozoic Reef Evolution",
@@ -117,6 +192,11 @@ const AdminPublications = () => {
     <>
       <h1 className="font-display text-3xl font-bold text-primary">Manage Publications</h1>
       <div className="mt-2 h-1 w-16 rounded-full bg-accent" />
+
+      <div className="mt-6">
+        <MetricsEditor />
+      </div>
+
       <p className="mt-2 text-xs text-muted-foreground">
         DB에 없는 기존 논문은 정적 데이터에서 표시됩니다. 새 논문을 추가하거나 기존 논문을 수정하세요.
       </p>
