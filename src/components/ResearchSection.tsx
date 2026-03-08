@@ -116,9 +116,16 @@ const ResearchSection = () => {
               <p className="text-[11px] font-semibold uppercase tracking-widest text-accent">
                 {topic.subtitle}
               </p>
-              <h3 className="mt-2 font-display text-xl font-bold text-primary md:text-2xl">
-                {topic.title}
-              </h3>
+              <div className="mt-2 flex items-center gap-2">
+                <h3 className="font-display text-xl font-bold text-primary md:text-2xl">
+                  {topic.title}
+                </h3>
+                {topicCounts[topic.title] && (
+                  <span className="rounded-full bg-accent/15 px-2.5 py-0.5 text-[11px] font-bold text-accent">
+                    {topicCounts[topic.title]} papers
+                  </span>
+                )}
+              </div>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 {topic.description}
               </p>
