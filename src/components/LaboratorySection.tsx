@@ -62,7 +62,7 @@ const LaboratorySection = () => {
         .order("sort_order")
         .limit(1);
       if (error) throw error;
-      return data?.[0]?.content as typeof staticData | undefined;
+      return data?.[0]?.content as unknown as typeof staticData | undefined;
     },
   });
 
