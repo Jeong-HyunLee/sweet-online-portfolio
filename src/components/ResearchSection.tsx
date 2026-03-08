@@ -1,7 +1,9 @@
+import { useMemo } from "react";
 import galleryOutcrop from "@/assets/gallery-outcrop.jpg";
 import galleryThinsection from "@/assets/gallery-thinsection.jpg";
 import galleryFossils from "@/assets/gallery-fossils.jpg";
 import galleryLab from "@/assets/gallery-lab.jpg";
+import { publications } from "@/data/publications";
 
 interface ResearchTopic {
   id: string;
