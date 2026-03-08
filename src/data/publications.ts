@@ -6,7 +6,9 @@ export interface Publication {
   doi: string;
   highlight?: string;
   type: "journal" | "book";
-  pdfUrl?: string;
+  pdfUrl?: string;        // relative path e.g. "/papers/Lee2026_Sedimentology.pdf"
+  visibility: "public" | "private";  // public = visible to all, private = internal only
+  keywords?: string[];    // for metadata-based search
 }
 
 export const publications: Publication[] = [
