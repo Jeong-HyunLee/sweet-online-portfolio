@@ -45,7 +45,7 @@ const AboutSection = () => {
           <div className="md:col-span-3 space-y-4 text-base leading-relaxed text-muted-foreground">
             <div className="float-left mr-6 mb-4">
               <img
-                src={professorPhoto}
+                src={professorField}
                 alt="Prof. Jeong-Hyun Lee"
                 className="w-36 rounded-md border shadow-sm"
               />
