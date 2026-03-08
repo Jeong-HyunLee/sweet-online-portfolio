@@ -151,6 +151,9 @@ export const publications: Publication[] = [
     doi: "https://doi.org/10.1111/sed.13048",
     highlight: "Editors' Picks 2023",
     type: "journal",
+    pdfUrl: "/papers/public/Lee2023_Sedimentology.pdf",
+    keywords: ["stromatolite", "thrombolite", "Cambrian", "biostrome"],
+    researchTopics: ["Stromatolites & Microbialites", "Cambro-Ordovician Reefs"],
   },
   {
     authors: "Lee, J.-H.*, Riding, R.",
@@ -159,6 +162,8 @@ export const publications: Publication[] = [
     journal: "Journal of Paleontology, v. 97, 26–37",
     doi: "https://doi.org/10.1017/jpa.2022.85",
     type: "journal",
+    keywords: ["sponge", "Spongiostroma", "Mississippian"],
+    researchTopics: ["Sponge Paleontology"],
   },
   // 2022
   {
