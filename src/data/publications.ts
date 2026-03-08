@@ -39,6 +39,9 @@ export const publications: Publication[] = [
     journal: "Earth-Science Reviews, v. 270, 105244",
     doi: "https://doi.org/10.1016/j.earscirev.2025.105244",
     type: "journal",
+    pdfUrl: "/papers/public/Lee2025_EarthSciRev.pdf",
+    keywords: ["Great Unconformity", "Sino-Korean Block", "stratigraphy"],
+    researchTopics: ["Korean Geology & the Great Unconformity"],
   },
   {
     authors: "Jeon, J., Li, Q.-J., Lee, J.-H.*",
