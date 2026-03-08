@@ -255,6 +255,9 @@ export const publications: Publication[] = [
     doi: "http://dx.doi.org/10.1111/GBI.12422",
     highlight: "Journal Cover · Most Cited 2020–22",
     type: "journal",
+    pdfUrl: "/papers/public/Lee2021_Geobiology.pdf",
+    keywords: ["Cryptozoon", "keratose sponge", "microbial consortium"],
+    researchTopics: ["Sponge Paleontology", "Stromatolites & Microbialites"],
   },
   {
     authors: "Lee, J.-H.*, Riding, R.",
@@ -263,6 +266,8 @@ export const publications: Publication[] = [
     journal: "Palaeogeography, Palaeoclimatology, Palaeoecology, v. 571, 110288",
     doi: "https://doi.org/10.1016/j.palaeo.2021.110288",
     type: "journal",
+    keywords: ["keratolite", "stromatolite", "consortia"],
+    researchTopics: ["Stromatolites & Microbialites"],
   },
   {
     authors: "Lee, J.-H.*",
@@ -272,6 +277,10 @@ export const publications: Publication[] = [
     doi: "https://doi.org/10.1016/B978-0-12-409548-9.11974-8",
     highlight: "Book Chapter",
     type: "book",
+    pdfUrl: "/papers/private/Lee2021_EncyclopediaGeology.pdf",
+    visibility: "private",
+    keywords: ["stromatolite", "encyclopedia", "review"],
+    researchTopics: ["Stromatolites & Microbialites"],
   },
   // 2020
   {
