@@ -1,7 +1,9 @@
 import { useState, useMemo, useEffect, useCallback } from "react";
 import { ExternalLink, FileText, Search, X, Tag, ChevronDown, ChevronsUpDown } from "lucide-react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { publications, type Publication, type ResearchTopic } from "@/data/publications";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { publications as staticPublications, type Publication, type ResearchTopic } from "@/data/publications";
 
 type TabKey = "all" | "journal" | "book";
 
