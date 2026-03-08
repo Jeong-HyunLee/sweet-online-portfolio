@@ -1,5 +1,17 @@
 import { Newspaper, Calendar, ExternalLink } from "lucide-react";
-import { newsItems, type NewsItem } from "@/data/news";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { newsItems as staticNews } from "@/data/news";
+
+interface NewsItemDisplay {
+  id: string;
+  title: string;
+  content: string;
+  category: string;
+  published_at: string;
+  image_url?: string | null;
+  doi?: string | null;
+}
 
 const categoryIcon: Record<string, string> = {
   paper: "📄",
@@ -19,7 +31,7 @@ const categoryLabel: Record<string, string> = {
   general: "News",
 };
 
-const NewsCard = ({ item }: { item: NewsItem }) => {
+const NewsCard = ({ item }: { item: NewsItemDisplay }) => {
   const isLink = item.category === "paper" && item.doi;
 
   const cardContent = (
@@ -67,7 +79,7 @@ const NewsCard = ({ item }: { item: NewsItem }) => {
   if (isLink) {
     return (
       <a
-        href={item.doi}
+        href={item.doi!}
         target="_blank"
         rel="noopener noreferrer"
         className="group rounded-md border bg-card overflow-hidden transition-colors hover:border-accent/50 cursor-pointer"
@@ -85,7 +97,27 @@ const NewsCard = ({ item }: { item: NewsItem }) => {
 };
 
 const NewsSection = () => {
-  const news = newsItems;
+  // Try to fetch from DB first, fall back to static data
+  const { data: dbNews } = useQuery({
+    queryKey: ["lab-news"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("lab_news")
+        .select("*")
+        .order("published_at", { ascending: false });
+      if (error) throw error;
+      return data as NewsItemDisplay[];
+    },
+  });
+
+  // Use DB data if available, otherwise use static data
+  const news: NewsItemDisplay[] = dbNews && dbNews.length > 0
+    ? dbNews
+    : staticNews.map((item) => ({
+        ...item,
+        image_url: item.image_url || null,
+        doi: item.doi || null,
+      }));
 
   if (!news || news.length === 0) return null;
 
