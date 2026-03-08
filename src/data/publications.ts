@@ -419,7 +419,7 @@ export const publications: Publication[] = [
     doi: "https://doi.org/10.1016/j.palaeo.2017.10.003",
     type: "journal",
     keywords: ["macroborer", "Cambrian", "intraclast", "bioerosion"],
-    researchTopics: ["Phanerozoic Reef Evolution"],
+    researchTopics: ["Joseon Supergroup"],
   },
 
   // ═══════════════════════ 2017 ═══════════════════════
