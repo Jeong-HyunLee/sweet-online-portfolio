@@ -151,8 +151,7 @@ const ResearchSection = () => {
       </div>
     </div>
   </section>
-);
-
+  );
 };
 
 export default ResearchSection;
