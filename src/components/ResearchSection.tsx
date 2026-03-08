@@ -22,7 +22,7 @@ const topics: ResearchTopic[] = [
     description:
       "Our lab investigates how reef ecosystems evolved throughout the Phanerozoic Eon (~540 Ma–present). We examine how biological innovation, mass extinctions, and oceanic environmental changes — including oxygenation events and seawater chemistry shifts — have repeatedly reshaped marine reef ecosystems. Our work spans from early Cambrian archaeocyath–microbial reefs through Ordovician sponge–microbial buildups to Mississippian frameworks, revealing patterns of reef decline, recovery, and ecological reorganization across deep time.",
     image: galleryOutcrop,
-    tags: ["Paleoecology", "Reef Evolution", "Mass Extinctions"],
+    tags: ["Reef Ecology", "Mass Extinctions", "Oxygenation Events", "Reef Recovery"],
   },
   {
     id: "research-microbialites",
@@ -31,7 +31,7 @@ const topics: ResearchTopic[] = [
     description:
       "Microbialites — including stromatolites, thrombolites, tufas, and other microbially-mediated carbonate structures — represent some of the earliest evidence of life on Earth. We combine field observation, petrography, EBSD crystallography, and geochemistry to understand how these structures form, what they reveal about ancient and modern environments, and how to distinguish biogenic from abiotic origins. Our research extends from Precambrian–Paleozoic marine microbialites to Cretaceous freshwater tufas, exploring the full spectrum of microbially influenced carbonate precipitation.",
     image: galleryThinsection,
-    tags: ["Microbial Carbonates", "EBSD", "Biosignatures"],
+    tags: ["Stromatolites", "Thrombolites", "Tufas", "EBSD", "Biosignatures"],
   },
   {
     id: "research-sponge-paleontology",
@@ -40,7 +40,7 @@ const topics: ResearchTopic[] = [
     description:
       "Sponges — particularly lithistids, stromatoporoids, and keratose sponges — were critical reef builders throughout the Paleozoic. Our work has revealed that some classic 'stromatolites' are actually keratose sponge–microbial consortia, fundamentally reinterpreting the fossil record. We study their taxonomy, paleoecology, and role in reef construction from the Cambrian to the Carboniferous across multiple continents, including the recent discovery of the earliest phosphatic stromatoporoid reefs from the Early Ordovician.",
     image: galleryFossils,
-    tags: ["Stromatoporoids", "Lithistid Sponges", "Keratose Sponges"],
+    tags: ["Stromatoporoids", "Lithistid Sponges", "Keratose Sponges", "Sponge–Microbe Consortia"],
   },
   {
     id: "research-joseon-supergroup",
@@ -49,7 +49,7 @@ const topics: ResearchTopic[] = [
     description:
       "The Joseon Supergroup preserves a remarkable record of Cambrian–Ordovician sedimentation on the eastern Sino-Korean Block. We study the Great Unconformity, Cambrian transgression sequences, provenance shifts, and bioerosion records using detrital zircon geochronology, sedimentary facies analysis, and chemostratigraphy. Our research also encompasses the broader Paleozoic stratigraphy of the Korean Peninsula, including the Devonian Imjin System and Ordovician reef and platform development in the Taebaek and Yeongwol groups.",
     image: galleryOutcrop,
-    tags: ["Stratigraphy", "Provenance Analysis", "Detrital Zircon"],
+    tags: ["Great Unconformity", "Detrital Zircon", "Taebaek Group", "Bioerosion"],
   },
   {
     id: "research-other-studies",
@@ -58,7 +58,7 @@ const topics: ResearchTopic[] = [
     description:
       "Beyond our core research themes, our lab contributes to diverse geological studies including Cretaceous alluvial and lacustrine sedimentology, impact crater analysis (Jeokjung–Chogye structure), ichnology (trace fossils), Miocene basin analysis and igneous geochemistry, vertebrate paleontology (Elasmobranchii, dinosaur tracks), and geoarchaeology. These collaborative projects reflect the breadth of our geological expertise and our commitment to advancing Earth science across disciplines.",
     image: galleryLab,
-    tags: ["Sedimentology", "Impact Craters", "Ichnology", "Basin Analysis"],
+    tags: ["Impact Craters", "Ichnology", "Miocene Basins", "Vertebrate Paleontology"],
   },
 ];
 
