@@ -64,13 +64,8 @@ const topics: ResearchTopic[] = [
 ];
 
 const handleTopicClick = (topicTitle: string) => {
-  const pubSection = document.getElementById("publications");
-  if (pubSection) {
-    pubSection.scrollIntoView({ behavior: "smooth" });
-    setTimeout(() => {
-      window.dispatchEvent(new CustomEvent("filter-publications-topic", { detail: topicTitle }));
-    }, 400);
-  }
+  // Navigate to publications page with topic filter
+  window.location.href = `/publications?topic=${encodeURIComponent(topicTitle)}`;
 };
 
 const ResearchSection = () => {
