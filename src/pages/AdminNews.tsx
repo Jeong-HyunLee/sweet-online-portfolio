@@ -46,6 +46,8 @@ interface PdfItem {
 
 const AdminNews = () => {
   const { session, isAdmin, loading, signOut } = useAdminAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [form, setForm] = useState<NewsForm>(emptyNewsForm);
   const [editing, setEditing] = useState(false);
   const [uploading, setUploading] = useState(false);
