@@ -2,7 +2,7 @@ import { GraduationCap, Briefcase, Award, BookOpen } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { education as staticEdu, employment as staticEmp, awards as staticAwards, grants as staticGrants } from "@/data/about";
-import professorPhoto from "@/assets/professor-photo.jpg";
+import professorField from "@/assets/professor-field.jpg";
 
 const AboutSection = () => {
   const { data: dbContent } = useQuery({
@@ -45,7 +45,7 @@ const AboutSection = () => {
           <div className="md:col-span-3 space-y-4 text-base leading-relaxed text-muted-foreground">
             <div className="float-left mr-6 mb-4">
               <img
-                src={professorPhoto}
+                src={professorField}
                 alt="Prof. Jeong-Hyun Lee"
                 className="w-36 rounded-md border shadow-sm"
               />
