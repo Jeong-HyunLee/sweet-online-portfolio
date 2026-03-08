@@ -27,6 +27,9 @@ export const publications: Publication[] = [
     journal: "Sedimentology, v. 73, 418–440",
     doi: "https://doi.org/10.1111/sed.70067",
     type: "journal",
+    pdfUrl: "/papers/public/Lee2026_Sedimentology.pdf",
+    keywords: ["detrital zircon", "Cambrian transgression", "provenance"],
+    researchTopics: ["Korean Geology & the Great Unconformity"],
   },
   // 2025
   {
