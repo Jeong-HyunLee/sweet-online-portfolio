@@ -5,10 +5,10 @@ import { Link, useLocation } from "react-router-dom";
 const navItems = [
   { label: "Home", path: "/" },
   { label: "About", path: "/about" },
+  { label: "Members", path: "/members" },
   { label: "Research", path: "/research" },
   { label: "Laboratory", path: "/laboratory" },
   { label: "Publications", path: "/publications" },
-  { label: "Members", path: "/members" },
   { label: "Contact", path: "/contact" },
 ];
 
