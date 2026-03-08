@@ -15,10 +15,13 @@ const HeroSection = () => (
       <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-primary-foreground sm:text-5xl md:text-6xl">
         Invertebrate Paleontology &amp; Carbonate Sedimentology
       </h1>
-      <p className="mt-6 text-lg font-light text-primary-foreground/80">
+      <p className="mt-4 text-sm font-medium text-primary-foreground/70 uppercase tracking-widest">
+        Prof. Jeong-Hyun Lee
+      </p>
+      <p className="mt-4 text-lg font-light text-primary-foreground/80">
         Department of Geological Sciences, Chungnam National University
         <br />
-        Daejeon 34134, South Korea
+        Daejeon 34134, Republic of Korea
       </p>
     </div>
   </section>
