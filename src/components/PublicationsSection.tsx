@@ -221,26 +221,7 @@ const PublicationsSection = () => {
         <div className="mt-2 h-1 w-16 rounded-full bg-accent" />
 
         {/* Metrics */}
-        <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {[
-            { value: "63+", label: "Journal Articles" },
-            { value: "23", label: "h-index" },
-            { value: "1,496", label: "Citations" },
-          ].map((m) => (
-            <div key={m.label} className="border-l-4 border-accent rounded-r-md bg-card px-5 py-4">
-              <p className="text-2xl font-bold text-primary font-display">{m.value}</p>
-              <p className="text-[11px] text-muted-foreground uppercase tracking-widest mt-1">{m.label}</p>
-            </div>
-          ))}
-          <a
-            href="https://scholar.google.com/citations?user=siOMho4AAAAJ"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 rounded-md bg-accent px-5 py-4 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/80"
-          >
-            Google Scholar <ExternalLink size={14} />
-          </a>
-        </div>
+        <PublicationMetrics totalPubs={publicPubs.length} />
 
         {/* Research topic filter */}
         <div className="mt-8 flex flex-wrap gap-2">
