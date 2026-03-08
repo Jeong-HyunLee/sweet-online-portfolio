@@ -111,6 +111,15 @@ const PublicationsSection = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [topicFilter, setTopicFilter] = useState<ResearchTopic | null>(null);
 
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const topic = (e as CustomEvent).detail as ResearchTopic;
+      setTopicFilter(topic);
+    };
+    window.addEventListener("filter-publications-topic", handler);
+    return () => window.removeEventListener("filter-publications-topic", handler);
+  }, []);
+
   const publicPubs = useMemo(
     () => publications.filter((p) => (p.visibility ?? "public") === "public"),
     []
