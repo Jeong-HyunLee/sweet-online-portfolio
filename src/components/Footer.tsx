@@ -80,7 +80,7 @@ const Footer = () => (
         <div className="rounded-md overflow-hidden border aspect-[4/3]">
           <iframe
             title="Chungnam National University, Department of Geological Sciences"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1604.5!2d127.33997!3d36.36630!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35654953e2901487%3A0x7e26f1e2a5b0e9f3!2z7Lap64Ko64yA7ZWZ6rWQIOyekOyXsOqzvO2VmeuMgO2VmSAz7Zi466S0!5e0!3m2!1sko!2skr!4v1700000000000"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=36.3663,127.3400&zoom=16"
             width="100%"
             height="100%"
             style={{ border: 0 }}

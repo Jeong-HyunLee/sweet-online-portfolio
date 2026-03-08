@@ -23,12 +23,12 @@ const MembersSection = () => {
   });
 
   const hasDbData = dbMembers && dbMembers.length > 0;
-  const currentMembers: Member[] = hasDbData
-    ? dbMembers.filter((m) => !m.is_alumni).map((m) => ({ name: m.name, role: m.role, topic: m.topic, period: m.period }))
-    : staticCurrent;
-  const alumni: Member[] = hasDbData
-    ? dbMembers.filter((m) => m.is_alumni).map((m) => ({ name: m.name, role: m.role, topic: m.topic, period: m.period }))
-    : staticAlumni;
+  const currentMembers = hasDbData
+    ? dbMembers.filter((m) => !m.is_alumni).map((m) => ({ id: m.id, name: m.name, role: m.role, topic: m.topic, period: m.period }))
+    : staticCurrent.map((m, i) => ({ id: `static-${i}`, ...m }));
+  const alumni = hasDbData
+    ? dbMembers.filter((m) => m.is_alumni).map((m) => ({ id: m.id, name: m.name, role: m.role, topic: m.topic, period: m.period }))
+    : staticAlumni.map((m, i) => ({ id: `alumni-${i}`, ...m }));
 
   return (
     <section id="members" className="py-20">
@@ -47,7 +47,7 @@ const MembersSection = () => {
 
           <div className="grid gap-4 sm:grid-cols-2 mb-4">
             {currentMembers.slice(0, 2).map((m) => (
-              <div key={m.name} className="rounded-md border-l-4 border-accent bg-card p-6">
+              <div key={m.id} className="rounded-md border-l-4 border-accent bg-card p-6">
                 <div className="flex items-start justify-between gap-2">
                   <p className="font-semibold text-foreground">{m.name}</p>
                   <span className={`rounded-sm px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider whitespace-nowrap ${roleColor[m.role] || "bg-secondary text-secondary-foreground"}`}>
@@ -62,7 +62,7 @@ const MembersSection = () => {
 
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {currentMembers.slice(2).map((m) => (
-              <div key={m.name} className="rounded-md border bg-card p-4">
+              <div key={m.id} className="rounded-md border bg-card p-4">
                 <span className={`inline-block rounded-sm px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider mb-2 ${roleColor[m.role] || "bg-secondary text-secondary-foreground"}`}>
                   {m.role}
                 </span>
@@ -82,7 +82,7 @@ const MembersSection = () => {
           </div>
           <div className="space-y-3">
             {alumni.map((m) => (
-              <div key={m.name} className="rounded-md border bg-card/60 p-5 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
+              <div key={m.id} className="rounded-md border bg-card/60 p-5 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
                 <div className="shrink-0 sm:w-48">
                   <p className="font-semibold text-foreground text-sm">{m.name}</p>
                   <p className="text-[10px] text-muted-foreground/60">{m.period}</p>
