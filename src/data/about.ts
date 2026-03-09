@@ -18,6 +18,8 @@ export const employment = [
   { role: "Visiting Associate Professor", place: "University of Tennessee, Knoxville", years: "2022–2023" },
   { role: "Assistant Professor", place: "Chungnam National University", years: "2016–2020" },
   { role: "Postdoctoral Researcher", place: "University of Tennessee, Knoxville", years: "2015–2016" },
+  { role: "Research Professor", place: "Korea University", years: "2015" },
+  { role: "Postdoctoral Fellow", place: "Korea University", years: "2014–2015" },
 ];
 
 export const awards = [
