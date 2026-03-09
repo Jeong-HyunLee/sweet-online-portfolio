@@ -1,4 +1,4 @@
-import { GraduationCap, Briefcase, Award, BookOpen } from "lucide-react";
+import { GraduationCap, Briefcase, Award, BookOpen, Download } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { education as staticEdu, employment as staticEmp, awards as staticAwards, grants as staticGrants } from "@/data/about";
@@ -41,7 +41,18 @@ const AboutSection = () => {
         <p className="text-sm text-muted-foreground">
           Chungnam National University, Daejeon 34134, South Korea
         </p>
-        <div className="mt-2 h-1 w-16 rounded-full bg-accent" />
+        <div className="mt-3 flex flex-wrap items-center gap-3">
+          <div className="h-1 w-16 rounded-full bg-accent" />
+          <a
+            href="https://www.dropbox.com/s/ydpd7nzdhst4ro0/Curriculum%20Vitae_JHLee_latest.docx?dl=0"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-md border bg-card px-4 py-2 text-sm font-semibold text-accent hover:bg-accent hover:text-accent-foreground transition-colors"
+          >
+            <Download size={14} />
+            Download Full CV
+          </a>
+        </div>
 
         {/* Research description with photo */}
         <div className="mt-8 grid gap-8 md:grid-cols-5">
@@ -54,18 +65,18 @@ const AboutSection = () => {
               />
             </div>
             <p>
-              <strong className="text-foreground">My research interest mainly lies in paleoecology of the Cambrian and Ordovician</strong>, beginning of the Phanerozoic. In order to understand this time interval, I focus on carbonate sedimentology and invertebrate fossils such as sponges and calcified microbes.
+              <strong className="text-foreground">I am a geologist working on carbonate sedimentology and invertebrate paleontology.</strong> My primary research interest lies in the paleoecology of the early Paleozoic (Cambrian and Ordovician), which marks the dawn of the Phanerozoic Eon.
             </p>
             <p>
-              Understanding how organisms evolved along with changes in environmental condition is of my primary interest. I also use tools such as chemostratigraphy and provenance of siliciclastic sediment to understand the time interval.
+              I investigate how ancient reef ecosystems were constructed by organisms such as sponges and calcified microbes, and how these communities responded to environmental changes. My work integrates fieldwork, petrographic analysis, and geochemical approaches to reconstruct past depositional environments and ecological dynamics.
             </p>
           </div>
           <div className="md:col-span-2 space-y-3">
             {[
-              { label: "Focus", value: "Cambrian–Ordovician Paleoecology" },
-              { label: "Methods", value: "Carbonate Sedimentology & Chemostratigraphy" },
+              { label: "Focus", value: "Early Paleozoic Paleoecology & Reef Evolution" },
+              { label: "Methods", value: "Petrography & Geochemical Analysis" },
               { label: "Organisms", value: "Sponges & Calcified Microbes" },
-              { label: "Tools", value: "Provenance Analysis of Siliciclastic Sediment" },
+              { label: "Fieldwork", value: "Carbonate Successions Worldwide" },
             ].map((item) => (
               <div key={item.label} className="border-l-4 border-accent rounded-r-md bg-card px-5 py-4">
                 <p className="text-[11px] font-semibold uppercase tracking-widest text-accent">{item.label}</p>

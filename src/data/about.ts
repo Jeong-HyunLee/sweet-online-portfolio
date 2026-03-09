@@ -34,5 +34,4 @@ export const grants = [
   { years: "2023–2032", title: "Hanwoomul-Phagi Basic Research Grant: Paleoecology and evolution of reefs", amount: "₩1.89B", funder: "National Research Foundation of Korea" },
   { years: "2023–2027", title: "Development of exploration and mining technology on domestic titanium ore", amount: "₩12.4B (CNU ₩1.75B)", funder: "Korea Energy Technology Evaluation and Planning" },
   { years: "2024–2027", title: "Multiscale and multidisciplinary research on the Paleozoic Yeongweol sedimentary complex", amount: "₩900M", funder: "National Research Foundation of Korea" },
-  { years: "2019–2022", title: "Outstanding Young Scientist Grant: Comparative study on early Paleozoic paleoecology", amount: "₩550M", funder: "National Research Foundation of Korea" },
 ];
