@@ -36,7 +36,10 @@ const AboutSection = () => {
           Jeong-Hyun Lee, PhD
         </h2>
         <p className="mt-1 text-lg font-medium text-accent">
-          Professor of Carbonate Sedimentology &amp; Invertebrate Paleontology
+          Professor, Department of Geology and Earth Environmental Sciences
+        </p>
+        <p className="text-sm text-muted-foreground">
+          Chungnam National University, Daejeon 34134, South Korea
         </p>
         <div className="mt-2 h-1 w-16 rounded-full bg-accent" />
 
@@ -51,10 +54,10 @@ const AboutSection = () => {
               />
             </div>
             <p>
-              <strong className="text-foreground">My research interest mainly lies in paleoecology of the Cambrian and Ordovician</strong>, the beginning of the Phanerozoic. In order to understand this time interval, I focus on carbonate sedimentology and invertebrate fossils such as sponges and calcified microbes.
+              <strong className="text-foreground">My research interest mainly lies in paleoecology of the Cambrian and Ordovician</strong>, beginning of the Phanerozoic. In order to understand this time interval, I focus on carbonate sedimentology and invertebrate fossils such as sponges and calcified microbes.
             </p>
             <p>
-              Understanding how organisms evolved along with changes in environmental conditions is of my primary interest. I also use tools such as chemostratigraphy and provenance analysis of siliciclastic sediment.
+              Understanding how organisms evolved along with changes in environmental condition is of my primary interest. I also use tools such as chemostratigraphy and provenance of siliciclastic sediment to understand the time interval.
             </p>
           </div>
           <div className="md:col-span-2 space-y-3">
@@ -62,6 +65,7 @@ const AboutSection = () => {
               { label: "Focus", value: "Cambrian–Ordovician Paleoecology" },
               { label: "Methods", value: "Carbonate Sedimentology & Chemostratigraphy" },
               { label: "Organisms", value: "Sponges & Calcified Microbes" },
+              { label: "Tools", value: "Provenance Analysis of Siliciclastic Sediment" },
             ].map((item) => (
               <div key={item.label} className="border-l-4 border-accent rounded-r-md bg-card px-5 py-4">
                 <p className="text-[11px] font-semibold uppercase tracking-widest text-accent">{item.label}</p>
