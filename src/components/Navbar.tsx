@@ -68,6 +68,14 @@ const Navbar = () => {
               {item.label}
             </Link>
           ))}
+          <Link
+            to="/admin"
+            className="mt-2 flex items-center gap-2 py-3 text-sm font-medium text-muted-foreground hover:text-primary"
+            onClick={() => setOpen(false)}
+          >
+            <LogIn size={14} />
+            Admin Login
+          </Link>
         </div>
       )}
     </nav>
