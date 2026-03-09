@@ -1,0 +1,1 @@
+DELETE FROM site_content WHERE id = '8c708904-7e9f-42f1-bca7-4e2817e0afef';
