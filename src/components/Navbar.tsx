@@ -22,7 +22,7 @@ const Navbar = () => {
         <Link to="/" className="font-display text-lg font-bold tracking-wide text-primary">
           JH Lee Lab
         </Link>
-        <ul className="hidden md:flex gap-8">
+        <ul className="hidden md:flex gap-8 items-center">
           {navItems.map((item) => (
             <li key={item.label}>
               <Link
@@ -37,6 +37,16 @@ const Navbar = () => {
               </Link>
             </li>
           ))}
+          <li>
+            <Link
+              to="/admin"
+              className="inline-flex items-center gap-1.5 rounded-md border border-input bg-background px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+              title="Admin Login"
+            >
+              <LogIn size={14} />
+              Login
+            </Link>
+          </li>
         </ul>
         <button className="md:hidden text-foreground" onClick={() => setOpen(!open)} aria-label="Toggle menu">
           {open ? <X size={24} /> : <Menu size={24} />}
