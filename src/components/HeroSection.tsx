@@ -1,7 +1,7 @@
 import heroImage from "@/assets/hero-geology.jpg";
 
 const HeroSection = () => (
-  <section id="home" className="relative flex min-h-[70vh] items-center justify-center overflow-hidden">
+  <section id="home" className="relative flex min-h-[50vh] max-h-[60vh] items-center justify-center overflow-hidden">
     <img
       src={heroImage}
       alt="Geological rock formations showing sedimentary strata"
