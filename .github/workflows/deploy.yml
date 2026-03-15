@@ -35,6 +35,14 @@ jobs:
           chmod 600 ~/.ssh/nas_deploy
           ssh-keyscan -H ${{ secrets.NAS_HOST }} >> ~/.ssh/known_hosts
 
+      - name: Debug SSH connection
+        run: |
+          echo "=== SSH key fingerprint ==="
+          ssh-keygen -lf ~/.ssh/nas_deploy
+          echo "=== Testing SSH connection (verbose) ==="
+          ssh -vvv -i ~/.ssh/nas_deploy -o StrictHostKeyChecking=no \
+            ${{ secrets.NAS_USER }}@${{ secrets.NAS_HOST }} "echo SSH_OK; whoami; uname -a" 2>&1 || true
+
       - name: Deploy dist/ to NAS via rsync
         run: |
           rsync -avzr --delete \
