@@ -28,12 +28,16 @@ jobs:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
 
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.NAS_SSH_KEY }}" > ~/.ssh/nas_deploy
+          chmod 600 ~/.ssh/nas_deploy
+          ssh-keyscan -H ${{ secrets.NAS_HOST }} >> ~/.ssh/known_hosts
+
       - name: Deploy dist/ to NAS via rsync
-        uses: burnett01/rsync-deployments@6.0.0
-        with:
-          switches: -avzr --delete
-          path: dist/
-          remote_path: /volume1/web/lab-website/
-          remote_host: ${{ secrets.NAS_HOST }}
-          remote_user: ${{ secrets.NAS_USER }}
-          remote_key: ${{ secrets.NAS_SSH_KEY }}
+        run: |
+          rsync -avzr --delete \
+            -e "ssh -i ~/.ssh/nas_deploy -o StrictHostKeyChecking=no" \
+            dist/ \
+            ${{ secrets.NAS_USER }}@${{ secrets.NAS_HOST }}:/volume1/web/lab-website/
