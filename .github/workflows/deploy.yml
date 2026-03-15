@@ -34,18 +34,13 @@ jobs:
           echo "${{ secrets.NAS_SSH_KEY }}" > ~/.ssh/nas_deploy
           chmod 600 ~/.ssh/nas_deploy
           ssh-keyscan -H ${{ secrets.NAS_HOST }} >> ~/.ssh/known_hosts
+          printf "Host nas\n  HostName %s\n  User %s\n  IdentityFile ~/.ssh/nas_deploy\n  StrictHostKeyChecking no\n  IdentitiesOnly yes\n" \
+            "${{ secrets.NAS_HOST }}" "${{ secrets.NAS_USER }}" > ~/.ssh/config
+          chmod 600 ~/.ssh/config
+          cat ~/.ssh/config
 
-      - name: Debug SSH connection
-        run: |
-          echo "=== SSH key fingerprint ==="
-          ssh-keygen -lf ~/.ssh/nas_deploy
-          echo "=== Testing SSH connection (verbose) ==="
-          ssh -vvv -i ~/.ssh/nas_deploy -o StrictHostKeyChecking=no \
-            ${{ secrets.NAS_USER }}@${{ secrets.NAS_HOST }} "echo SSH_OK; whoami; uname -a" 2>&1 || true
+      - name: Test SSH connection
+        run: ssh nas "echo SSH_OK; whoami"
 
       - name: Deploy dist/ to NAS via rsync
-        run: |
-          rsync -avzr --delete \
-            -e "ssh -i ~/.ssh/nas_deploy -o StrictHostKeyChecking=no" \
-            dist/ \
-            ${{ secrets.NAS_USER }}@${{ secrets.NAS_HOST }}:/volume1/web/lab-website/
+        run: rsync -avzr --delete dist/ nas:/volume1/web/lab-website/
